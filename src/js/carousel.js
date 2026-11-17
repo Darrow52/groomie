@@ -1,6 +1,5 @@
 /* Carousel: active slide in the center, neighbours on both sides */
 
-// Enough slides for both sides of a wide (2560px+) screen
 const MIN_SLIDES = 9
 
 export function initCarousel(root) {
@@ -8,8 +7,8 @@ export function initCarousel(root) {
   const dots = [...root.querySelectorAll('[data-carousel-dot]')]
   let slides = [...track.children]
   const realCount = slides.length
+  const listeners = []
 
-  // Clone slides
   while (slides.length < MIN_SLIDES) {
     slides.slice(0, realCount).forEach((slide) => {
       const copy = slide.cloneNode(true)
@@ -19,13 +18,11 @@ export function initCarousel(root) {
     slides = [...track.children]
   }
 
-  // Avatar index of a slide (data-dot, or slide order)
-  const dotOf = (index) => (slides[index].dataset.dot !== undefined ? Number(slides[index].dataset.dot) : index % realCount)
-
   const count = slides.length
   let active = Number(track.dataset.start) || 0
 
-  // Slide offset from the center
+  const dotOf = (index) => (slides[index].dataset.dot !== undefined ? Number(slides[index].dataset.dot) : index % realCount)
+
   function offsetOf(index) {
     let d = index - active
     if (d > count / 2) d -= count
@@ -33,52 +30,40 @@ export function initCarousel(root) {
     return d
   }
 
-  // Layout
-  function render(step = 0, instant = false) {
-    const styles = getComputedStyle(track)
-    const gap = parseFloat(styles.columnGap) || 0
-    const scale = parseFloat(styles.getPropertyValue('--side-scale')) || 1
-    const width = slides[0].offsetWidth
-    const sideWidth = width * scale
+  function setInstant(on) {
+    slides.forEach((slide) => slide.toggleAttribute('data-instant', on))
+  }
 
-    const transformOf = (d) => {
-      const x = d === 0 ? 0 : Math.sign(d) * (width / 2 + gap + sideWidth / 2 + (Math.abs(d) - 1) * (sideWidth + gap))
-      return `translateX(${x}px) scale(${d === 0 ? 1 : scale})`
-    }
+  function render(step = 0, instant = false) {
+    if (instant) setInstant(true)
 
     slides.forEach((slide, index) => {
       const d = offsetOf(index)
       const prev = slide.dataset.offset === undefined ? d : Number(slide.dataset.offset)
-      const wrapped = step !== 0 && d - prev !== -step
 
-      if (instant) {
-        slide.style.transition = 'none'
-      } else if (wrapped) {
-        // Slide moved to the other end: start it off-screen, then slide it in
-        slide.style.transition = 'none'
-        slide.style.transform = transformOf(d + step)
+      if (!instant && step !== 0 && d - prev !== -step) {
+        slide.setAttribute('data-instant', '')
+        slide.dataset.offset = d + step
         slide.offsetWidth
-        slide.style.transition = ''
-      } else {
-        slide.style.transition = ''
+        slide.removeAttribute('data-instant')
       }
 
-      slide.style.transform = transformOf(d)
       slide.dataset.offset = d
       slide.toggleAttribute('data-active', d === 0)
-
       slide.querySelectorAll('a, button').forEach((el) => (el.tabIndex = d === 0 ? 0 : -1))
     })
 
     dots.forEach((dot, index) => dot.setAttribute('aria-current', String(index === dotOf(active))))
+
+    if (instant) requestAnimationFrame(() => requestAnimationFrame(() => setInstant(false)))
   }
 
-  // Navigation
-  function goTo(index, { instant = false } = {}) {
+  function goTo(index, { instant = false, manual = true } = {}) {
     const target = ((index % count) + count) % count
     if (instant) {
       active = target
       render(0, true)
+      listeners.forEach((cb) => cb(slides[active], manual))
       return
     }
     if (target === active) return
@@ -87,13 +72,12 @@ export function initCarousel(root) {
     if (step < -count / 2) step += count
     active = target
     render(step)
+    listeners.forEach((cb) => cb(slides[active], manual))
   }
 
-  // Arrows
   root.querySelector('[data-carousel-prev]')?.addEventListener('click', () => goTo(active - 1))
   root.querySelector('[data-carousel-next]')?.addEventListener('click', () => goTo(active + 1))
 
-  // Avatars
   dots.forEach((dot, index) =>
     dot.addEventListener('click', () => {
       const candidates = slides.map((_, i) => i).filter((i) => dotOf(i) === index)
@@ -102,7 +86,6 @@ export function initCarousel(root) {
     }),
   )
 
-  // Swipe
   let startX = null
   let swiped = false
   track.addEventListener('pointerdown', (event) => {
@@ -119,7 +102,6 @@ export function initCarousel(root) {
     }
   })
 
-  // Side slide click
   track.addEventListener(
     'click',
     (event) => {
@@ -135,16 +117,18 @@ export function initCarousel(root) {
     true,
   )
 
-  // Keyboard
   root.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowRight') goTo(active + 1)
     if (event.key === 'ArrowLeft') goTo(active - 1)
   })
 
-  // Resize
-  window.addEventListener('resize', () => render(0, true))
-
   render(0, true)
 
-  return { goTo }
+  return {
+    goTo,
+    next: () => goTo(active + 1, { manual: false }),
+    select: (slide) => goTo(slides.indexOf(slide)),
+    active: () => slides[active],
+    onChange: (cb) => listeners.push(cb),
+  }
 }

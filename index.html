@@ -12,73 +12,73 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Merriweather:opsz,wght@18..144,300..600&display=swap"
-    />
+    <link rel="preload" href="/fonts/inter-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/merriweather-variable-latin.woff2" as="font" type="font/woff2" crossorigin />
     <script type="module" src="/src/main.js"></script>
   </head>
-  <body>
+  <body class="has-[#mobile-menu:not([hidden])]:overflow-hidden">
     <!-- ===== Header ===== -->
-    <header class="group absolute inset-x-0 top-4 z-30 lg:top-5 max-lg:data-open:fixed" data-header>
+    <header class="group fixed inset-x-0 top-0 z-30 pt-4 transition-transform duration-300 ease-out motion-reduce:transition-none data-hidden:-translate-y-full lg:pt-5" data-header>
       <div class="relative z-10 mx-auto flex max-w-page items-center justify-between px-4 lg:px-15">
         <!-- Menu button + logo -->
-        <div class="flex h-[66px] items-center gap-4 rounded-full bg-ivory/12 px-6 backdrop-blur-glass group-data-open:bg-surface">
+        <div class="flex h-16.5 items-center gap-4 rounded-full bg-ivory/12 px-6 backdrop-blur-glass transition-colors header-light:bg-surface">
           <button
             type="button"
-            class="text-ivory group-data-open:text-action-dark lg:hidden"
+            class="text-ivory header-light:text-action-dark lg:hidden"
             aria-label="Open menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
             data-menu-toggle
           >
-            <img src="/img/icon-menu.svg" alt="" width="26" height="26" class="group-data-open:hidden" />
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" class="group-data-open:hidden" aria-hidden="true">
+              <path d="M0 8.25H26M0 16.25H26" />
+            </svg>
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="hidden group-data-open:block" aria-hidden="true">
               <path d="M6 6L18 18M18 6L6 18" />
             </svg>
           </button>
 
-          <a href="./" class="relative block h-[34px] w-[131px] overflow-hidden" aria-label="Groomie — home">
+          <a href="./" class="relative block h-8.5 w-32.75 overflow-hidden" aria-label="Groomie — home">
             <img
               src="/img/logo.webp"
               alt="Groomie"
               width="1502"
               height="292"
-              class="absolute top-0 left-0 h-[110.71%] w-[147.75%] max-w-none group-data-open:hidden"
+              class="absolute top-0 left-0 h-[110.71%] w-[147.75%] max-w-none header-light:hidden"
             />
-            <img src="/img/logo-dark.svg" alt="Groomie" width="131" height="34" class="hidden group-data-open:block" />
+            <img src="/img/logo-dark.svg" alt="Groomie" width="131" height="34" class="hidden header-light:block" />
           </a>
         </div>
 
         <!-- Main navigation -->
-        <nav class="hidden h-[66px] items-center rounded-full bg-ivory/12 px-6 backdrop-blur-glass lg:flex" aria-label="Main">
-          <ul class="flex gap-6 text-button font-medium text-ivory">
+        <nav class="hidden h-16.5 items-center rounded-full bg-ivory/12 px-6 backdrop-blur-glass transition-colors header-light:bg-surface lg:flex" aria-label="Main">
+          <ul class="flex gap-6 text-button font-medium text-ivory header-light:text-ink">
             <li>
               <button
                 type="button"
-                class="flex items-center gap-1.5 transition-colors hover:text-ivory/60 aria-expanded:[&>img]:rotate-180"
+                class="flex items-center gap-1.5 transition-colors hover:text-ivory/60 header-light:hover:text-ink/60 aria-expanded:[&>svg]:rotate-180"
                 aria-expanded="false"
                 aria-controls="mega-menu"
                 data-shop-toggle
               >
                 Shop
-                <img src="/img/icon-chevron-down.svg" alt="" width="12" height="12" class="transition-transform" />
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform motion-reduce:transition-none" aria-hidden="true">
+                  <path d="M2 4.5L6 8.5L10 4.5" />
+                </svg>
               </button>
             </li>
-            <li><a href="#skin-quiz" class="transition-colors hover:text-ivory/60">Skin Quiz</a></li>
-            <li><a href="#how-it-works" class="transition-colors hover:text-ivory/60">How it Works</a></li>
-            <li><a href="#clinical-research" class="transition-colors hover:text-ivory/60">Clinical Research</a></li>
-            <li><a href="#faq" class="transition-colors hover:text-ivory/60">FAQs</a></li>
+            <li><a href="#skin-quiz" class="transition-colors hover:text-ivory/60 header-light:hover:text-ink/60">Skin Quiz</a></li>
+            <li><a href="#how-it-works" class="transition-colors hover:text-ivory/60 header-light:hover:text-ink/60">How it Works</a></li>
+            <li><a href="#clinical-research" class="transition-colors hover:text-ivory/60 header-light:hover:text-ink/60">Clinical Research</a></li>
+            <li><a href="#faq" class="transition-colors hover:text-ivory/60 header-light:hover:text-ink/60">FAQs</a></li>
           </ul>
         </nav>
 
         <!-- Account and cart -->
-        <div class="flex gap-2.5 text-ivory">
+        <div class="flex gap-2.5 text-ivory header-light:text-action-dark">
           <a
             href="/account"
-            class="hidden size-[66px] items-center justify-center rounded-full bg-ivory/12 backdrop-blur-glass transition-colors hover:text-ivory/60 lg:flex"
+            class="hidden size-16.5 items-center justify-center rounded-full bg-ivory/12 backdrop-blur-glass transition-colors hover:text-ivory/60 header-light:bg-surface header-light:hover:text-action-dark lg:flex"
             aria-label="Account"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -88,7 +88,7 @@
           </a>
           <a
             href="/cart"
-            class="flex size-[66px] items-center justify-center rounded-full bg-ivory/12 backdrop-blur-glass transition-colors hover:text-ivory/60 group-data-open:bg-surface group-data-open:text-action-dark"
+            class="flex size-16.5 items-center justify-center rounded-full bg-ivory/12 backdrop-blur-glass transition-colors hover:text-ivory/60 header-light:bg-surface header-light:hover:text-action-dark"
             aria-label="Cart"
           >
             <svg width="24" height="25" viewBox="0 0 24 24.9579" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
@@ -100,7 +100,7 @@
         <!-- Mega menu (desktop) -->
         <div
           id="mega-menu"
-          class="absolute inset-x-15 top-full mt-5 hidden gap-6 rounded-card bg-ivory p-6 text-ink lg:flex"
+          class="absolute inset-x-15 top-full mt-5 hidden gap-6 rounded-card bg-ivory p-6 text-ink header-light:shadow-popover lg:flex"
           hidden
         >
           <!-- Featured -->
@@ -142,12 +142,12 @@
           <div class="w-px bg-action-dark/10" aria-hidden="true"></div>
 
           <!-- Shop by ritual -->
-          <div class="flex w-[356px] shrink-0 flex-col gap-4">
+          <div class="flex w-89 shrink-0 flex-col gap-4">
             <p class="text-label font-semibold uppercase">Shop by ritual</p>
             <ul class="flex flex-col gap-3">
               <li>
-                <a href="/shop/shavers" class="menu-card group/card">
-                  <img src="/img/menu-shaver.webp" alt="" width="100" height="100" loading="lazy" class="size-[98px] shrink-0 object-cover" />
+                <a href="/shop/shavers" class="group/card flex items-center gap-4 overflow-hidden rounded-card border border-action-dark/10 bg-muted pr-6 text-ink">
+                  <img src="/img/menu-shaver.webp" alt="" width="100" height="100" loading="lazy" class="size-24.5 shrink-0 object-cover" />
                   <span class="flex flex-1 flex-col gap-1">
                     <span class="text-body font-medium">LuxePro™ Shaver</span>
                     <span class="text-body-sm">Cordless shaving. No nicks, burn, or fuss</span>
@@ -158,8 +158,8 @@
                 </a>
               </li>
               <li>
-                <a href="/shop/skin-care" class="menu-card group/card">
-                  <img src="/img/menu-skincare.webp" alt="" width="100" height="100" loading="lazy" class="size-[98px] shrink-0 object-cover" />
+                <a href="/shop/skin-care" class="group/card flex items-center gap-4 overflow-hidden rounded-card border border-action-dark/10 bg-muted pr-6 text-ink">
+                  <img src="/img/menu-skincare.webp" alt="" width="100" height="100" loading="lazy" class="size-24.5 shrink-0 object-cover" />
                   <span class="flex flex-1 flex-col gap-1">
                     <span class="text-body font-medium">Skin Care</span>
                     <span class="text-body-sm">Serums &amp; cleansers for your daily ritual</span>
@@ -170,8 +170,8 @@
                 </a>
               </li>
               <li>
-                <a href="/shop/devices" class="menu-card group/card">
-                  <img src="/img/menu-devices.webp" alt="" width="100" height="100" loading="lazy" class="size-[98px] shrink-0 object-cover" />
+                <a href="/shop/devices" class="group/card flex items-center gap-4 overflow-hidden rounded-card border border-action-dark/10 bg-muted pr-6 text-ink">
+                  <img src="/img/menu-devices.webp" alt="" width="100" height="100" loading="lazy" class="size-24.5 shrink-0 object-cover" />
                   <span class="flex flex-1 flex-col gap-1">
                     <span class="text-body font-medium">Devices</span>
                     <span class="text-body-sm">LED masks &amp; wands for face, neck &amp; body</span>
@@ -187,13 +187,13 @@
           <!-- Promo card -->
           <a
             href="/shop/everblume"
-            class="relative isolate hidden w-[400px] shrink-0 xl:flex flex-col justify-between overflow-hidden rounded-card p-4 text-ivory"
+            class="relative isolate hidden w-100 shrink-0 xl:flex flex-col justify-between overflow-hidden rounded-card p-4 text-ivory"
           >
             <img src="/img/menu-promo.webp" alt="" width="1000" height="1000" loading="lazy" class="absolute inset-0 -z-10 size-full object-cover" />
             <span class="absolute inset-0 -z-10 bg-linear-to-b from-transparent to-black/60" aria-hidden="true"></span>
             <span class="sale-label text-label">New</span>
             <span class="flex flex-col gap-2">
-              <span class="flex items-start font-serif font-light text-h1">EverBlume<span class="pt-0.5 text-lead">™</span></span>
+              <span class="flex items-start font-headings font-light text-h1">EverBlume<span class="pt-0.5 text-lead">™</span></span>
               <span class="text-body-sm">
                 A daily beauty ritual designed to support fuller, healthier-looking hair, the science-backed way.
               </span>
@@ -205,20 +205,20 @@
       <!-- Mobile menu -->
       <div
         id="mobile-menu"
-        class="fixed inset-0 bg-ivory pt-[106px] text-ink lg:hidden"
+        class="fixed inset-0 bg-ivory pt-26.5 text-ink lg:hidden"
         hidden
       >
         <div class="flex h-full flex-col gap-6 overflow-y-auto px-4 pb-8 *:shrink-0">
           <!-- Promo card -->
           <a
             href="/shop/everblume"
-            class="relative isolate flex h-[280px] flex-col justify-between overflow-hidden rounded-card p-4 text-ivory"
+            class="relative isolate flex h-70 flex-col justify-between overflow-hidden rounded-card p-4 text-ivory"
           >
             <img src="/img/menu-promo.webp" alt="" width="1000" height="1000" loading="lazy" class="absolute inset-0 -z-10 size-full object-cover object-[50%_25%]" />
             <span class="absolute inset-0 -z-10 bg-linear-to-b from-transparent to-black/60" aria-hidden="true"></span>
             <span class="sale-label text-micro">New</span>
             <span class="flex flex-col gap-2">
-              <span class="flex items-start font-serif font-light text-h1-mobile">EverBlume<span class="pt-0.5 text-h2-mobile">™</span></span>
+              <span class="flex items-start font-headings font-light text-h1-mobile">EverBlume<span class="pt-0.5 text-h2-mobile">™</span></span>
               <span class="text-body-compact">
                 A daily beauty ritual designed to support fuller, healthier-looking hair, the science-backed way.
               </span>
@@ -239,8 +239,8 @@
               </summary>
               <ul class="mt-4 flex flex-col gap-3">
                 <li>
-                  <a href="/shop/shavers" class="menu-card group/card">
-                    <img src="/img/menu-shaver.webp" alt="" width="100" height="100" loading="lazy" class="size-[98px] shrink-0 object-cover" />
+                  <a href="/shop/shavers" class="group/card flex items-center gap-4 overflow-hidden rounded-card border border-action-dark/10 bg-muted pr-6 text-ink">
+                    <img src="/img/menu-shaver.webp" alt="" width="100" height="100" loading="lazy" class="size-24.5 shrink-0 object-cover" />
                     <span class="flex flex-1 flex-col gap-1">
                       <span class="text-body font-medium">LuxePro™ Shaver</span>
                       <span class="text-body-sm">Cordless shaving. No nicks, burn, or fuss</span>
@@ -251,8 +251,8 @@
                   </a>
                 </li>
                 <li>
-                  <a href="/shop/skin-care" class="menu-card group/card">
-                    <img src="/img/menu-skincare.webp" alt="" width="100" height="100" loading="lazy" class="size-[98px] shrink-0 object-cover" />
+                  <a href="/shop/skin-care" class="group/card flex items-center gap-4 overflow-hidden rounded-card border border-action-dark/10 bg-muted pr-6 text-ink">
+                    <img src="/img/menu-skincare.webp" alt="" width="100" height="100" loading="lazy" class="size-24.5 shrink-0 object-cover" />
                     <span class="flex flex-1 flex-col gap-1">
                       <span class="text-body font-medium">Skin Care</span>
                       <span class="text-body-sm">Serums &amp; cleansers for your daily ritual</span>
@@ -263,8 +263,8 @@
                   </a>
                 </li>
                 <li>
-                  <a href="/shop/devices" class="menu-card group/card">
-                    <img src="/img/menu-devices.webp" alt="" width="100" height="100" loading="lazy" class="size-[98px] shrink-0 object-cover" />
+                  <a href="/shop/devices" class="group/card flex items-center gap-4 overflow-hidden rounded-card border border-action-dark/10 bg-muted pr-6 text-ink">
+                    <img src="/img/menu-devices.webp" alt="" width="100" height="100" loading="lazy" class="size-24.5 shrink-0 object-cover" />
                     <span class="flex flex-1 flex-col gap-1">
                       <span class="text-body font-medium">Devices</span>
                       <span class="text-body-sm">LED masks &amp; wands for face, neck &amp; body</span>
@@ -321,7 +321,7 @@
             </ul>
           </div>
 
-          <a href="/shop" class="btn btn-dark w-full px-[42px]">
+          <a href="/shop" class="btn btn-dark w-full">
             Shop All
             <img src="/img/icon-arrow-right-light.svg" alt="" width="16" height="9" />
           </a>
@@ -332,7 +332,7 @@
     <main class="flex flex-col gap-12 lg:gap-20">
       <!-- ===== Hero ===== -->
       <section
-        class="relative isolate flex h-[836px] flex-col justify-end overflow-hidden pb-[91px] lg:h-[880px] lg:justify-center lg:pb-0"
+        class="relative isolate flex h-209 flex-col justify-end overflow-hidden pb-22.75 lg:h-220 lg:justify-center lg:pb-0"
         aria-labelledby="hero-title"
       >
         <!-- Background image -->
@@ -347,13 +347,13 @@
         ></div>
 
         <div class="mx-auto w-full max-w-page px-4 lg:px-15">
-          <div class="flex flex-col items-center gap-6 text-center lg:max-w-[607px] lg:items-start lg:text-left">
+          <div class="flex flex-col items-center gap-6 text-center lg:max-w-151.75 lg:items-start lg:text-left">
             <div class="flex flex-col items-center gap-3 lg:items-start">
               <p class="flex items-center gap-1.5 text-link font-medium text-ivory">
                 <img src="/img/rating-stars.svg" alt="5 out of 5 stars" width="80" height="16" class="h-3.5 w-auto lg:h-4" />
                 Loved by 500k+ women
               </p>
-              <h1 id="hero-title" class="font-serif text-h1-mobile font-light text-ivory lg:text-display">
+              <h1 id="hero-title" class="font-headings text-h1-mobile font-light text-ivory lg:text-display">
                 A Glow-Changing Routine For Your Hair
               </h1>
               <p class="text-body-sm text-ivory/80 lg:text-body">
@@ -362,7 +362,7 @@
               </p>
             </div>
 
-            <a href="/shop" class="btn btn-light w-full px-[42px] lg:w-fit lg:px-20">
+            <a href="/shop" class="btn btn-light w-full lg:w-fit">
               Shop Now
               <img src="/img/icon-arrow-right-dark.svg" alt="" width="16" height="9" />
             </a>
@@ -371,7 +371,7 @@
 
         <!-- Press logos -->
         <ul
-          class="absolute inset-x-0 bottom-0 flex h-[59px] items-center gap-16 overflow-hidden bg-ivory/12 px-4 backdrop-blur-glass [&>li]:shrink-0"
+          class="absolute inset-x-0 bottom-0 flex h-14.75 items-center gap-16 overflow-hidden bg-ivory/12 px-4 backdrop-blur-glass [&>li]:shrink-0"
           aria-label="As seen in"
         >
           <li><img src="/img/press-cbs.svg" alt="CBS" width="90" height="27" /></li>
@@ -389,14 +389,14 @@
       <!-- ===== Daily Capsule ===== -->
       <section class="mx-auto w-full max-w-page px-4 lg:px-15" aria-labelledby="capsule-title">
         <div class="flex flex-col gap-6 lg:flex-row lg:gap-8">
-          <figure class="order-2 flex flex-col-reverse gap-4 lg:order-none lg:w-[763px] lg:min-w-0 lg:flex-col">
+          <figure class="order-2 flex flex-col-reverse gap-4 lg:order-none lg:w-190.75 lg:min-w-0 lg:flex-col">
             <img
               src="/img/capsule-women.webp"
               alt="Two smiling women with long, healthy hair"
               width="1536"
               height="1024"
               loading="lazy"
-              class="h-[238px] w-full rounded-card object-cover lg:h-0 lg:grow"
+              class="h-59.5 w-full rounded-card object-cover lg:h-0 lg:grow"
             />
             <figcaption
               class="flex items-center gap-2 rounded-2xl bg-surface py-1 pr-3 pl-1 text-body-compact lg:gap-3 lg:pr-5 lg:text-body-sm"
@@ -416,7 +416,7 @@
           <div class="contents lg:flex lg:flex-1 lg:flex-col lg:gap-6">
             <div class="order-1 flex flex-col gap-3 lg:order-none">
               <p class="badge badge-gold">Powered by AnaGain™ Nu.</p>
-              <h2 id="capsule-title" class="font-serif text-h1-mobile font-light lg:text-h1">
+              <h2 id="capsule-title" class="font-headings text-h1-mobile font-light lg:text-h1">
                 A daily capsule designed <br class="hidden lg:block" />for real results
               </h2>
               <p class="text-body-sm lg:text-body">
@@ -426,7 +426,7 @@
             </div>
 
             <!-- Feature list -->
-            <ul class="order-3 flex flex-col divide-y divide-action-dark/10 lg:order-none lg:w-[449px] lg:max-w-full">
+            <ul class="order-3 flex flex-col divide-y divide-action-dark/10 lg:order-none lg:w-112.25 lg:max-w-full">
               <li class="flex items-center gap-3 py-4 first:pt-0 last:pb-0 lg:gap-4">
                 <img
                   src="/img/icon-fuller-hair.svg"
@@ -434,10 +434,10 @@
                   width="44"
                   height="44"
                   loading="lazy"
-                  class="size-[34px] shrink-0 object-contain p-[5px] lg:size-11 lg:p-[7px]"
+                  class="size-8.5 shrink-0 object-contain p-1.25 lg:size-11 lg:p-1.75"
                 />
                 <div class="flex flex-col gap-2">
-                  <h3 class="font-serif text-h2-mobile font-semibold text-gold lg:text-h2">Fuller-Looking Hair</h3>
+                  <h3 class="font-headings text-h2-mobile font-semibold text-gold lg:text-h2">Fuller-Looking Hair</h3>
                   <p class="text-body-compact lg:text-body-sm">Supports visibly thicker, denser hair</p>
                 </div>
               </li>
@@ -448,10 +448,10 @@
                   width="44"
                   height="44"
                   loading="lazy"
-                  class="size-[34px] shrink-0 lg:size-11"
+                  class="size-8.5 shrink-0 lg:size-11"
                 />
                 <div class="flex flex-col gap-2">
-                  <h3 class="font-serif text-h2-mobile font-semibold text-gold lg:text-h2">Less Shedding</h3>
+                  <h3 class="font-headings text-h2-mobile font-semibold text-gold lg:text-h2">Less Shedding</h3>
                   <p class="text-body-compact lg:text-body-sm">Helps reduce shedding, for a fuller head of hair</p>
                 </div>
               </li>
@@ -462,16 +462,16 @@
                   width="44"
                   height="44"
                   loading="lazy"
-                  class="size-[34px] shrink-0 object-contain p-[5px] lg:size-11 lg:p-[7px]"
+                  class="size-8.5 shrink-0 object-contain p-1.25 lg:size-11 lg:p-1.75"
                 />
                 <div class="flex flex-col gap-2">
-                  <h3 class="font-serif text-h2-mobile font-semibold text-gold lg:text-h2">Healthier-Looking Hair</h3>
+                  <h3 class="font-headings text-h2-mobile font-semibold text-gold lg:text-h2">Healthier-Looking Hair</h3>
                   <p class="text-body-compact lg:text-body-sm">Nourishes from within for shine and strength</p>
                 </div>
               </li>
             </ul>
 
-            <a href="/shop" class="order-4 btn btn-dark w-full px-[42px] lg:order-none lg:w-fit lg:px-20">
+            <a href="/shop" class="order-4 btn btn-dark w-full lg:order-none lg:w-fit">
               Shop Now
               <img src="/img/icon-arrow-right-light.svg" alt="" width="16" height="9" />
             </a>
@@ -496,10 +496,10 @@
             class="relative flex flex-col gap-6 rounded-card border border-ivory/20 bg-ivory/12 pt-10 pb-6 text-ivory backdrop-blur-glass lg:grid lg:grid-cols-[1fr_auto] lg:gap-x-8 lg:gap-y-10 lg:p-10 wide:grid-cols-[auto_auto] wide:grid-rows-[auto_1fr] wide:justify-between wide:gap-y-6"
           >
             <div class="flex flex-col gap-3 px-6 lg:px-0">
-              <h2 id="evidence-title" class="font-serif text-h1-mobile font-light lg:text-h1">
+              <h2 id="evidence-title" class="font-headings text-h1-mobile font-light lg:text-h1">
                 Evidence-backed<br />formulation
               </h2>
-              <p class="max-w-[325px] text-body-sm text-ivory/80 lg:max-w-[350px] lg:text-body">
+              <p class="max-w-81.25 text-body-sm text-ivory/80 lg:max-w-87.5 lg:text-body">
                 Every capsule is engineered in two stages, protection first, delivery second.
               </p>
             </div>
@@ -509,9 +509,9 @@
               class="relative grid grid-cols-[152px_190px] items-center gap-y-5 lg:col-span-2 lg:w-fit lg:grid-cols-[210px_190px_210px] lg:items-stretch lg:justify-self-center lg:gap-x-16 lg:gap-y-0 wide:col-span-1 wide:col-start-2 wide:row-span-2 wide:row-start-1"
             >
               <article class="col-start-2 row-start-1 flex flex-col gap-3 lg:col-start-1">
-                <p class="badge badge-glass w-[103px] justify-center">Outer layer</p>
+                <p class="badge badge-glass w-25.75 justify-center">Outer layer</p>
                 <div class="flex flex-col gap-2">
-                  <h3 class="font-serif text-h2-mobile font-semibold lg:text-h2">Protection First</h3>
+                  <h3 class="font-headings text-h2-mobile font-semibold lg:text-h2">Protection First</h3>
                   <p class="text-body-compact text-ivory/80 lg:text-body-sm">
                     Shields the active ingredients from stomach acid, so nothing breaks down before it reaches your
                     bloodstream.
@@ -525,15 +525,15 @@
                 width="600"
                 height="600"
                 loading="lazy"
-                class="col-start-1 row-span-3 row-start-1 h-[300px] w-[152px] object-cover lg:col-start-2 lg:row-span-1 lg:h-[374px] lg:w-[190px]"
+                class="col-start-1 row-span-3 row-start-1 h-75 w-38 object-cover lg:col-start-2 lg:row-span-1 lg:h-93.5 lg:w-47.5"
               />
 
               <hr class="col-start-2 row-start-2 border-ivory/20 lg:hidden" />
 
               <article class="col-start-2 row-start-3 flex flex-col gap-3 lg:col-start-3 lg:row-start-1 lg:justify-end">
-                <p class="badge badge-glass w-[103px] justify-center">Inner layer</p>
+                <p class="badge badge-glass w-25.75 justify-center">Inner layer</p>
                 <div class="flex flex-col gap-2">
-                  <h3 class="font-serif text-h2-mobile font-semibold lg:text-h2">Where It Counts</h3>
+                  <h3 class="font-headings text-h2-mobile font-semibold lg:text-h2">Where It Counts</h3>
                   <p class="text-body-compact text-ivory/80 lg:text-body-sm">
                     Releases AnaGain™ Nu and OptiBiome BS50® directly where your body can actually use them, right at
                     the hair follicle.
@@ -548,7 +548,7 @@
                 width="239"
                 height="137"
                 loading="lazy"
-                class="pointer-events-none absolute top-[171px] right-[445px] hidden rotate-180 lg:block"
+                class="pointer-events-none absolute top-42.75 right-111.25 hidden rotate-180 lg:block"
               />
               <img
                 src="/img/evidence-line-right.svg"
@@ -556,7 +556,7 @@
                 width="134"
                 height="137"
                 loading="lazy"
-                class="pointer-events-none absolute top-[65px] right-[164px] hidden lg:block"
+                class="pointer-events-none absolute top-16.25 right-41 hidden lg:block"
               />
             </div>
 
@@ -564,9 +564,9 @@
             <div
               class="border-t border-ivory/20 px-6 pt-6 lg:col-start-2 lg:row-start-1 lg:w-fit lg:self-start lg:rounded-card lg:border lg:p-8 wide:col-start-1 wide:row-start-2"
             >
-              <p class="mx-auto flex w-[310px] max-w-full items-start justify-between gap-4">
-                <em class="w-[163px] text-caption-italic">EverBlume vs. a standard biotin capsule</em>
-                <strong class="font-serif text-metric-sm font-medium uppercase">~0.02mm</strong>
+              <p class="mx-auto flex w-77.5 max-w-full items-start justify-between gap-4">
+                <em class="w-40.75 text-caption-italic">EverBlume vs. a standard biotin capsule</em>
+                <strong class="font-headings text-metric-sm font-medium uppercase">~0.02mm</strong>
               </p>
             </div>
           </div>
@@ -576,9 +576,9 @@
       <!-- ===== What to Expect ===== -->
       <section class="mx-auto w-full max-w-page px-4 lg:px-15" aria-labelledby="expect-title">
         <div
-          class="grid grid-cols-[179px_1fr] gap-x-[19px] gap-y-6 lg:grid-cols-[minmax(0,763px)_308px] lg:grid-rows-[auto_1fr_auto] lg:gap-x-8"
+          class="grid grid-cols-[179px_1fr] gap-x-4.75 gap-y-6 lg:grid-cols-[minmax(0,763px)_308px] lg:grid-rows-[auto_1fr_auto] lg:gap-x-8"
         >
-          <h2 id="expect-title" class="col-span-2 font-serif text-h1-mobile font-light lg:col-span-1 lg:col-start-2 lg:text-h1">
+          <h2 id="expect-title" class="col-span-2 font-headings text-h1-mobile font-light lg:col-span-1 lg:col-start-2 lg:text-h1">
             What to expect
           </h2>
 
@@ -591,7 +591,7 @@
               width="2400"
               height="1792"
               loading="lazy"
-              class="col-start-1 row-start-2 h-[349px] w-full rounded-card object-cover object-[66%_50%] lg:absolute lg:inset-0 lg:h-full lg:rounded-none lg:object-[50%_15%]"
+              class="col-start-1 row-start-2 h-87.25 w-full rounded-card object-cover object-[66%_50%] lg:absolute lg:inset-0 lg:h-full lg:rounded-none lg:object-[50%_15%]"
             />
             <figcaption
               class="col-span-2 row-start-3 flex items-center gap-2 rounded-2xl bg-surface py-1 pr-3 pl-1 text-body-compact backdrop-blur-glass lg:relative lg:w-fit"
@@ -610,28 +610,28 @@
 
           <!-- Timeline -->
           <ol
-            class="relative col-start-2 row-start-2 flex translate-y-[9px] flex-col gap-5 self-start lg:translate-y-0 before:absolute before:top-3 before:bottom-0 before:left-[2.5px] before:w-px before:bg-action-dark/10 lg:gap-12"
+            class="relative col-start-2 row-start-2 flex translate-y-2.25 flex-col gap-5 self-start lg:translate-y-0 before:absolute before:top-3 before:bottom-0 before:left-[2.5px] before:w-px before:bg-action-dark/10 lg:gap-12"
           >
             <li
-              class="relative flex flex-col gap-2 pl-[19px] before:absolute before:top-[9px] before:left-0 before:size-1.5 before:rounded-full before:bg-action-dark"
+              class="relative flex flex-col gap-2 pl-4.75 before:absolute before:top-2.25 before:left-0 before:size-1.5 before:rounded-full before:bg-action-dark"
             >
               <p class="badge badge-gold">Day 30</p>
               <p class="text-body-compact lg:text-body-sm">Build the daily habit and routine</p>
             </li>
             <li
-              class="relative flex flex-col gap-2 pl-[19px] before:absolute before:top-[9px] before:left-0 before:size-1.5 before:rounded-full before:bg-action-dark"
+              class="relative flex flex-col gap-2 pl-4.75 before:absolute before:top-2.25 before:left-0 before:size-1.5 before:rounded-full before:bg-action-dark"
             >
               <p class="badge badge-gold">Day 60</p>
               <p class="text-body-compact lg:text-body-sm">Stay consistent with your routine</p>
             </li>
             <li
-              class="relative flex flex-col gap-2 pl-[19px] before:absolute before:top-[9px] before:left-0 before:size-1.5 before:rounded-full before:bg-action-dark"
+              class="relative flex flex-col gap-2 pl-4.75 before:absolute before:top-2.25 before:left-0 before:size-1.5 before:rounded-full before:bg-action-dark"
             >
               <p class="badge badge-gold">Day 90</p>
               <p class="text-body-compact lg:text-body-sm">Minimum window to see real progress</p>
             </li>
             <li
-              class="relative flex flex-col gap-2 pl-[19px] before:absolute before:top-[9px] before:left-0 before:size-1.5 before:rounded-full before:bg-action-dark"
+              class="relative flex flex-col gap-2 pl-4.75 before:absolute before:top-2.25 before:left-0 before:size-1.5 before:rounded-full before:bg-action-dark"
             >
               <p class="badge badge-gold-filled">Day 180+</p>
               <p class="text-body-compact lg:text-body-sm">Continue for your best, lasting results</p>
@@ -640,7 +640,7 @@
 
           <a
             href="/shop"
-            class="col-span-2 row-start-4 -mt-2 btn btn-dark w-full px-[42px] lg:col-span-1 lg:col-start-2 lg:row-start-3 lg:mt-0 lg:w-fit lg:px-20"
+            class="col-span-2 row-start-4 -mt-2 btn btn-dark w-full lg:col-span-1 lg:col-start-2 lg:row-start-3 lg:mt-0 lg:w-fit"
           >
             Shop Now
             <img src="/img/icon-arrow-right-light.svg" alt="" width="16" height="9" />
@@ -650,7 +650,7 @@
 
       <!-- ===== EverBlume ===== -->
       <section
-        class="relative isolate overflow-hidden pt-12 pb-12 text-center text-ivory lg:pt-20 lg:pb-[78px]"
+        class="relative isolate overflow-hidden pt-12 pb-12 text-center text-ivory lg:pt-20 lg:pb-19.5"
         aria-labelledby="everblume-title"
       >
         <img
@@ -664,10 +664,10 @@
         <div class="absolute inset-0 -z-10 bg-tint" aria-hidden="true"></div>
 
         <div class="mx-auto flex max-w-page flex-col items-center px-4">
-          <div class="flex max-w-[352px] flex-col items-center gap-3 lg:max-w-[390px]">
+          <div class="flex max-w-88 flex-col items-center gap-3 lg:max-w-97.5">
             <p class="badge badge-outline-light lg:hidden">Best choice</p>
-            <h2 id="everblume-title" class="font-serif text-h1-mobile font-light lg:text-h1">
-              EverBlume<sup class="mt-1.5 ml-1 inline-block align-top font-serif text-[18px]/[18px] font-normal lg:mt-2.5">™</sup>
+            <h2 id="everblume-title" class="font-headings text-h1-mobile font-light lg:text-h1">
+              EverBlume<sup class="mt-1.5 ml-1 inline-block align-top font-headings text-[18px]/[18px] font-normal lg:mt-2.5">™</sup>
             </h2>
             <p class="text-body-sm text-ivory/80 lg:text-body">
               Supports fuller-looking hair &amp; helps reduce shedding, powered by AnaGain™ Nu &amp; OptiBiome BS50®
@@ -675,7 +675,7 @@
           </div>
 
           <!-- Product stage -->
-          <div class="relative mt-8 h-[320px] w-[334px] lg:h-[448px] lg:w-[467px]">
+          <div class="relative mt-8 h-80 w-83.5 lg:h-112 lg:w-116.75">
             <img src="/img/everblume-ring.svg" alt="" width="467" height="448" loading="lazy" class="absolute inset-0 size-full" />
             <!-- Jar glow -->
             <img
@@ -684,7 +684,7 @@
               width="433"
               height="433"
               loading="lazy"
-              class="absolute top-[14px] left-1/2 w-[92.6%] -translate-x-1/2 opacity-20 blur-md lg:top-[13px] lg:blur-[17px]"
+              class="absolute top-3.5 left-1/2 w-[92.6%] -translate-x-1/2 opacity-20 blur-md lg:top-3.25 lg:blur-[17px]"
             />
             <img
               src="/img/everblume-jar-shadow.webp"
@@ -692,7 +692,7 @@
               width="433"
               height="433"
               loading="lazy"
-              class="absolute top-[14px] left-1/2 w-[92.6%] -translate-x-1/2 lg:top-[13px]"
+              class="absolute top-3.5 left-1/2 w-[92.6%] -translate-x-1/2 lg:top-3.25"
             />
 
             <ul class="[&>li]:absolute [&>li]:flex [&>li]:aspect-square [&>li]:w-[21.8%] [&>li]:items-center [&>li]:justify-center">
@@ -715,7 +715,7 @@
             </p>
           </div>
 
-          <a href="/shop" class="mt-[42px] btn btn-light w-full px-[42px] lg:w-fit lg:px-20">
+          <a href="/shop" class="mt-10.5 btn btn-light w-full lg:w-fit">
             Shop Now
             <img src="/img/icon-arrow-right-dark.svg" alt="" width="16" height="9" />
           </a>
@@ -725,7 +725,7 @@
       <!-- ===== Results ===== -->
       <section class="overflow-hidden" aria-labelledby="results-title" data-carousel data-results>
         <div class="mx-auto flex max-w-page flex-col items-center gap-6 px-4 lg:px-15">
-          <h2 id="results-title" class="max-w-[600px] text-center font-serif text-h1-mobile font-light lg:text-h1">
+          <h2 id="results-title" class="max-w-150 text-center font-headings text-h1-mobile font-light lg:text-h1">
             Join 1.5 million women transforming their hair
           </h2>
 
@@ -736,7 +736,7 @@
 
             <!-- Customer avatars -->
             <ul
-              class="flex w-[196px] snap-x snap-mandatory gap-2 overflow-x-auto [scrollbar-width:none] lg:w-auto lg:overflow-visible"
+              class="flex w-49 snap-x snap-mandatory gap-2 overflow-x-auto [scrollbar-width:none] lg:w-auto lg:overflow-visible"
               aria-label="Choose a customer"
             >
               <li class="shrink-0 snap-start">
@@ -778,32 +778,32 @@
 
           <!-- Growth stages carousel -->
           <ul
-            class="grid w-full touch-pan-y gap-x-4 lg:gap-x-8 lg:pb-4"
+            class="grid w-full touch-pan-y [--carousel-gap:--spacing(4)] lg:pb-4 lg:[--carousel-gap:--spacing(8)]"
             aria-label="Hair growth results"
             data-carousel-track
             data-start="1"
           >
             <li
-              class="w-full justify-self-center opacity-0 transition-[transform,opacity] duration-500 ease-out [grid-area:1/1] data-active:z-10 data-active:opacity-100 lg:w-[640px] lg:opacity-30 lg:data-active:opacity-100"
+              class="w-full carousel-slide opacity-0 data-active:z-10 data-active:opacity-100 lg:w-160 lg:opacity-30 lg:data-active:opacity-100"
               data-stage="0"
             >
               <article class="flex flex-col gap-6 lg:gap-4">
                 <div class="flex gap-2.5 lg:aspect-[700/481] lg:gap-4">
                   <figure
-                    class="relative isolate flex h-[230px] flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-3.5 pb-px lg:h-full lg:p-5"
+                    class="relative isolate flex h-57.5 flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-3.5 pb-px lg:h-full lg:p-5"
                   >
                     <img src="/img/result-1-before.webp" alt="Emily K. before EverBlume" width="312" height="440" loading="lazy" class="absolute inset-0 -z-10 size-full object-cover" data-photo="before" />
                     <figcaption class="badge badge-tag">Before</figcaption>
                   </figure>
                   <figure
-                    class="relative isolate flex h-[230px] flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-[18px] pb-px lg:h-full lg:p-5"
+                    class="relative isolate flex h-57.5 flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-4.5 pb-px lg:h-full lg:p-5"
                   >
                     <img src="/img/result-1-after.webp" alt="Emily K., 1-month grow" width="312" height="440" loading="lazy" class="absolute inset-0 -z-10 size-full object-cover" data-photo="after" />
                     <figcaption class="badge badge-gold">1-Month grow</figcaption>
                   </figure>
                 </div>
                 <blockquote
-                  class="flex flex-col items-center gap-2 px-[13px] text-center lg:items-start lg:gap-4 lg:rounded-card lg:border lg:border-action-dark/10 lg:p-4 lg:text-left lg:backdrop-blur-glass"
+                  class="flex flex-col items-center gap-2 px-3.25 text-center lg:items-start lg:gap-4 lg:rounded-card lg:border lg:border-action-dark/10 lg:p-4 lg:text-left lg:backdrop-blur-glass"
                 >
                   <footer class="flex items-center gap-2">
                     <cite class="text-body font-semibold not-italic" data-name>- Emily K.</cite>
@@ -814,26 +814,26 @@
               </article>
             </li>
             <li
-              class="w-full justify-self-center opacity-0 transition-[transform,opacity] duration-500 ease-out [grid-area:1/1] data-active:z-10 data-active:opacity-100 lg:w-[640px] lg:opacity-30 lg:data-active:opacity-100" data-active
+              class="w-full carousel-slide opacity-0 data-active:z-10 data-active:opacity-100 lg:w-160 lg:opacity-30 lg:data-active:opacity-100" data-active
               data-stage="1"
             >
               <article class="flex flex-col gap-6 lg:gap-4">
                 <div class="flex gap-2.5 lg:aspect-[700/481] lg:gap-4">
                   <figure
-                    class="relative isolate flex h-[230px] flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-3.5 pb-px lg:h-full lg:p-5"
+                    class="relative isolate flex h-57.5 flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-3.5 pb-px lg:h-full lg:p-5"
                   >
                     <img src="/img/result-2-before.webp" alt="Emily K. before EverBlume" width="312" height="440" loading="lazy" class="absolute inset-0 -z-10 size-full object-cover" data-photo="before" />
                     <figcaption class="badge badge-tag">Before</figcaption>
                   </figure>
                   <figure
-                    class="relative isolate flex h-[230px] flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-[18px] pb-px lg:h-full lg:p-5"
+                    class="relative isolate flex h-57.5 flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-4.5 pb-px lg:h-full lg:p-5"
                   >
                     <img src="/img/result-2-after.webp" alt="Emily K. after 3 months of EverBlume" width="312" height="440" loading="lazy" class="absolute inset-0 -z-10 size-full object-cover" data-photo="after" />
                     <figcaption class="badge badge-gold">3-Months grow</figcaption>
                   </figure>
                 </div>
                 <blockquote
-                  class="flex flex-col items-center gap-2 px-[13px] text-center lg:items-start lg:gap-4 lg:rounded-card lg:border lg:border-action-dark/10 lg:p-4 lg:text-left lg:backdrop-blur-glass"
+                  class="flex flex-col items-center gap-2 px-3.25 text-center lg:items-start lg:gap-4 lg:rounded-card lg:border lg:border-action-dark/10 lg:p-4 lg:text-left lg:backdrop-blur-glass"
                 >
                   <footer class="flex items-center gap-2">
                     <cite class="text-body font-semibold not-italic" data-name>- Emily K.</cite>
@@ -844,26 +844,26 @@
               </article>
             </li>
             <li
-              class="w-full justify-self-center opacity-0 transition-[transform,opacity] duration-500 ease-out [grid-area:1/1] data-active:z-10 data-active:opacity-100 lg:w-[640px] lg:opacity-30 lg:data-active:opacity-100"
+              class="w-full carousel-slide opacity-0 data-active:z-10 data-active:opacity-100 lg:w-160 lg:opacity-30 lg:data-active:opacity-100"
               data-stage="2"
             >
               <article class="flex flex-col gap-6 lg:gap-4">
                 <div class="flex gap-2.5 lg:aspect-[700/481] lg:gap-4">
                   <figure
-                    class="relative isolate flex h-[230px] flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-3.5 pb-px lg:h-full lg:p-5"
+                    class="relative isolate flex h-57.5 flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-3.5 pb-px lg:h-full lg:p-5"
                   >
                     <img src="/img/result-3-before.webp" alt="Emily K. before EverBlume" width="312" height="440" loading="lazy" class="absolute inset-0 -z-10 size-full object-cover" data-photo="before" />
                     <figcaption class="badge badge-tag">Before</figcaption>
                   </figure>
                   <figure
-                    class="relative isolate flex h-[230px] flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-[18px] pb-px lg:h-full lg:p-5"
+                    class="relative isolate flex h-57.5 flex-1 flex-col justify-end overflow-hidden rounded-card bg-surface px-4.5 pb-px lg:h-full lg:p-5"
                   >
                     <img src="/img/result-3-after.webp" alt="Emily K., 6-months grow" width="312" height="440" loading="lazy" class="absolute inset-0 -z-10 size-full object-cover" data-photo="after" />
                     <figcaption class="badge badge-gold">6-Months grow</figcaption>
                   </figure>
                 </div>
                 <blockquote
-                  class="flex flex-col items-center gap-2 px-[13px] text-center lg:items-start lg:gap-4 lg:rounded-card lg:border lg:border-action-dark/10 lg:p-4 lg:text-left lg:backdrop-blur-glass"
+                  class="flex flex-col items-center gap-2 px-3.25 text-center lg:items-start lg:gap-4 lg:rounded-card lg:border lg:border-action-dark/10 lg:p-4 lg:text-left lg:backdrop-blur-glass"
                 >
                   <footer class="flex items-center gap-2">
                     <cite class="text-body font-semibold not-italic" data-name>- Emily K.</cite>
@@ -875,7 +875,7 @@
             </li>
           </ul>
 
-          <a href="/shop" class="btn btn-dark w-full px-[42px] lg:w-fit lg:px-20">
+          <a href="/shop" class="btn btn-dark w-full lg:w-fit">
             Shop Now
             <img src="/img/icon-arrow-right-light.svg" alt="" width="16" height="9" />
           </a>
@@ -886,7 +886,7 @@
       <section class="relative overflow-hidden bg-cocoa pb-12 text-ivory lg:pb-20" aria-labelledby="routine-title">
         <!-- Background image -->
         <div
-          class="relative h-[350px] mask-b-from-[65%] mask-b-to-100% after:absolute after:inset-0 after:bg-cocoa/16 lg:h-[720px]"
+          class="relative h-87.5 mask-b-from-[65%] mask-b-to-100% after:absolute after:inset-0 after:bg-cocoa/16 lg:h-180"
         >
           <img
             src="/img/routine-bg.webp"
@@ -899,12 +899,12 @@
         </div>
 
         <!-- Content -->
-        <div class="relative mx-auto -mt-[88px] flex max-w-[1218px] flex-col items-center gap-6 px-4 lg:-mt-[167px] lg:px-15">
-          <div class="flex max-w-[680px] flex-col gap-3 text-center">
-            <h2 id="routine-title" class="font-serif text-h1-mobile font-light lg:text-h1">
+        <div class="relative mx-auto -mt-22 flex max-w-304.5 flex-col items-center gap-6 px-4 lg:-mt-41.75 lg:px-15">
+          <div class="flex max-w-170 flex-col gap-3 text-center">
+            <h2 id="routine-title" class="font-headings text-h1-mobile font-light lg:text-h1">
               The rest of your <br class="lg:hidden" />routine is waiting
             </h2>
-            <p class="mx-auto max-w-[600px] text-body-sm text-ivory/80 lg:text-body">
+            <p class="mx-auto max-w-150 text-body-sm text-ivory/80 lg:text-body">
               Supplements start the transformation from within, skincare, LED therapy &amp; shaving finish it from the
               outside.
             </p>
@@ -915,10 +915,10 @@
               <li class="lg:flex-1">
                 <a
                   href="/shop/shaver"
-                  class="group flex h-[130px] items-center justify-between gap-6 rounded-card border border-ivory/20 bg-ivory/12 pr-6 backdrop-blur-glass"
+                  class="group flex h-32.5 items-center justify-between gap-6 rounded-card border border-ivory/20 bg-ivory/12 pr-6 backdrop-blur-glass"
                 >
                   <div class="flex items-center gap-3">
-                    <img src="/img/routine-shaver.webp" alt="" width="104" height="128" loading="lazy" class="h-32 w-[104px] shrink-0 object-cover" />
+                    <img src="/img/routine-shaver.webp" alt="" width="104" height="128" loading="lazy" class="h-32 w-26 shrink-0 object-cover" />
                     <div class="flex flex-col gap-2">
                       <h3 class="text-card-title font-medium">LuxePro™ Shaver</h3>
                       <p class="text-body-compact lg:text-body-sm">Cordless shaving.<br />No nicks, burn, or fuss</p>
@@ -932,10 +932,10 @@
               <li class="lg:flex-1">
                 <a
                   href="/shop/skin-care"
-                  class="group flex h-[130px] items-center justify-between gap-6 rounded-card border border-ivory/20 bg-ivory/12 pr-6 backdrop-blur-glass"
+                  class="group flex h-32.5 items-center justify-between gap-6 rounded-card border border-ivory/20 bg-ivory/12 pr-6 backdrop-blur-glass"
                 >
                   <div class="flex items-center gap-3">
-                    <img src="/img/routine-skincare.webp" alt="" width="104" height="128" loading="lazy" class="h-32 w-[104px] shrink-0 object-cover" />
+                    <img src="/img/routine-skincare.webp" alt="" width="104" height="128" loading="lazy" class="h-32 w-26 shrink-0 object-cover" />
                     <div class="flex flex-col gap-2">
                       <h3 class="text-card-title font-medium">Skin Care</h3>
                       <p class="text-body-compact lg:text-body-sm">Serums &amp; cleansers<br />for your daily ritual</p>
@@ -949,10 +949,10 @@
               <li class="lg:flex-1">
                 <a
                   href="/shop/devices"
-                  class="group flex h-[130px] items-center justify-between gap-6 rounded-card border border-ivory/20 bg-ivory/12 pr-6 backdrop-blur-glass"
+                  class="group flex h-32.5 items-center justify-between gap-6 rounded-card border border-ivory/20 bg-ivory/12 pr-6 backdrop-blur-glass"
                 >
                   <div class="flex items-center gap-3">
-                    <img src="/img/routine-devices.webp" alt="" width="104" height="128" loading="lazy" class="h-32 w-[104px] shrink-0 object-cover" />
+                    <img src="/img/routine-devices.webp" alt="" width="104" height="128" loading="lazy" class="h-32 w-26 shrink-0 object-cover" />
                     <div class="flex flex-col gap-2">
                       <h3 class="text-card-title font-medium">Devices</h3>
                       <p class="text-body-compact lg:text-body-sm">LED masks &amp; wands<br />for face, neck &amp; body</p>
@@ -978,16 +978,16 @@
       </section>
 
       <!-- ===== Clinic ===== -->
-      <section class="overflow-hidden" aria-labelledby="clinic-title" data-carousel>
+      <section class="overflow-hidden" aria-labelledby="clinic-title" data-carousel data-video-slider>
         <div class="mx-auto flex max-w-page flex-col items-center gap-6 px-4 lg:px-15">
-          <div class="flex flex-col items-center gap-3 text-center lg:max-w-[570px]">
+          <div class="flex flex-col items-center gap-3 text-center lg:max-w-142.5">
             <p class="flex items-center gap-1 text-body font-medium text-gold">
               <img src="/img/clinic-laurel-left.svg" alt="" width="11" height="18" loading="lazy" />
               <img src="/img/clinic-caduceus.svg" alt="" width="22" height="15" loading="lazy" />
               Clinicians' Choice
               <img src="/img/clinic-laurel-right.svg" alt="" width="12" height="18" loading="lazy" />
             </p>
-            <h2 id="clinic-title" class="font-serif text-h1-mobile font-light lg:text-h1">Straight from the clinic</h2>
+            <h2 id="clinic-title" class="font-headings text-h1-mobile font-light lg:text-h1">Straight from the clinic</h2>
             <p class="text-body-sm lg:text-body">
               Trusted and recommended by over 200 certified dermatologists &amp; skincare professionals worldwide.
             </p>
@@ -1018,69 +1018,102 @@
 
           <!-- Video carousel -->
           <ul
-            class="grid w-full touch-pan-y gap-x-4 [--side-scale:1] lg:[--side-scale:0.6852]"
+            class="grid w-full touch-pan-y [--carousel-gap:--spacing(4)] [--side-scale:1] lg:[--side-scale:0.6852]"
             aria-label="Clinician videos"
             data-carousel-track
           >
             <li
-              class="relative flex h-[358px] w-full items-center justify-center justify-self-center overflow-hidden rounded-card opacity-0 transition-[transform,opacity] duration-500 ease-out [grid-area:1/1] data-active:z-10 data-active:opacity-100 lg:size-[540px] lg:opacity-30 lg:data-active:opacity-100" data-active
+              class="relative flex h-89.5 w-full items-center justify-center overflow-hidden rounded-card carousel-slide opacity-0 data-active:z-10 data-active:opacity-100 lg:size-135 lg:opacity-30 lg:data-active:opacity-100" data-active
               data-dot="0"
             >
-              <img src="/img/clinic-video-3.webp" alt="" width="540" height="540" loading="lazy" class="absolute inset-0 size-full object-cover" />
+              <video class="absolute inset-0 size-full object-cover" poster="/img/clinic-video-3.webp" muted playsinline preload="none" data-video="clinic-1.mp4"></video>
               <button
                 type="button"
-                class="relative flex size-11 items-center justify-center rounded-full bg-ivory transition-colors hover:bg-ivory/60"
+                class="relative flex size-11 items-center justify-center rounded-full bg-ivory text-action-dark transition-colors hover:bg-ivory/60"
                 aria-label="Play video from Dr. Gould"
-                data-video=""
+                data-video-play
               >
-                <img src="/img/icon-play.svg" alt="" width="24" height="24" />
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="playing:hidden" aria-hidden="true">
+                  <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" />
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="hidden playing:block" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14" rx="1.5" />
+                  <rect x="14" y="5" width="4" height="14" rx="1.5" />
+                </svg>
               </button>
             </li>
             <li
-              class="relative flex h-[358px] w-full items-center justify-center justify-self-center overflow-hidden rounded-card opacity-0 transition-[transform,opacity] duration-500 ease-out [grid-area:1/1] data-active:z-10 data-active:opacity-100 lg:size-[540px] lg:opacity-30 lg:data-active:opacity-100"
+              class="relative flex h-89.5 w-full items-center justify-center overflow-hidden rounded-card carousel-slide opacity-0 data-active:z-10 data-active:opacity-100 lg:size-135 lg:opacity-30 lg:data-active:opacity-100"
               data-dot="2"
             >
-              <img src="/img/clinic-video-4.webp" alt="" width="540" height="540" loading="lazy" class="absolute inset-0 size-full object-cover" />
+              <video class="absolute inset-0 size-full object-cover" poster="/img/clinic-video-4.webp" muted playsinline preload="none" data-video="clinic-3.mp4"></video>
               <button
                 type="button"
-                class="relative flex size-11 items-center justify-center rounded-full bg-ivory transition-colors hover:bg-ivory/60"
+                class="relative flex size-11 items-center justify-center rounded-full bg-ivory text-action-dark transition-colors hover:bg-ivory/60"
                 aria-label="Play video from Clinician 3"
-                data-video=""
+                data-video-play
               >
-                <img src="/img/icon-play.svg" alt="" width="24" height="24" />
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="playing:hidden" aria-hidden="true">
+                  <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" />
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="hidden playing:block" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14" rx="1.5" />
+                  <rect x="14" y="5" width="4" height="14" rx="1.5" />
+                </svg>
               </button>
             </li>
             <li
-              class="relative flex h-[358px] w-full items-center justify-center justify-self-center overflow-hidden rounded-card opacity-0 transition-[transform,opacity] duration-500 ease-out [grid-area:1/1] data-active:z-10 data-active:opacity-100 lg:size-[540px] lg:opacity-30 lg:data-active:opacity-100"
+              class="relative flex h-89.5 w-full items-center justify-center overflow-hidden rounded-card carousel-slide opacity-0 data-active:z-10 data-active:opacity-100 lg:size-135 lg:opacity-30 lg:data-active:opacity-100"
               data-dot="3"
             >
-              <img src="/img/clinic-video-1.webp" alt="" width="540" height="540" loading="lazy" class="absolute inset-0 size-full object-cover" />
+              <video class="absolute inset-0 size-full object-cover" poster="/img/clinic-video-1.webp" muted playsinline preload="none" data-video="clinic-4.mp4"></video>
               <button
                 type="button"
-                class="relative flex size-11 items-center justify-center rounded-full bg-ivory transition-colors hover:bg-ivory/60"
+                class="relative flex size-11 items-center justify-center rounded-full bg-ivory text-action-dark transition-colors hover:bg-ivory/60"
                 aria-label="Play video from Clinician 4"
-                data-video=""
+                data-video-play
               >
-                <img src="/img/icon-play.svg" alt="" width="24" height="24" />
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="playing:hidden" aria-hidden="true">
+                  <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" />
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="hidden playing:block" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14" rx="1.5" />
+                  <rect x="14" y="5" width="4" height="14" rx="1.5" />
+                </svg>
               </button>
             </li>
             <li
-              class="relative flex h-[358px] w-full items-center justify-center justify-self-center overflow-hidden rounded-card opacity-0 transition-[transform,opacity] duration-500 ease-out [grid-area:1/1] data-active:z-10 data-active:opacity-100 lg:size-[540px] lg:opacity-30 lg:data-active:opacity-100"
+              class="relative flex h-89.5 w-full items-center justify-center overflow-hidden rounded-card carousel-slide opacity-0 data-active:z-10 data-active:opacity-100 lg:size-135 lg:opacity-30 lg:data-active:opacity-100"
               data-dot="1"
             >
-              <img src="/img/clinic-video-2.webp" alt="" width="540" height="540" loading="lazy" class="absolute inset-0 size-full object-cover" />
+              <video class="absolute inset-0 size-full object-cover" poster="/img/clinic-video-2.webp" muted playsinline preload="none" data-video="clinic-2.mp4"></video>
               <button
                 type="button"
-                class="relative flex size-11 items-center justify-center rounded-full bg-ivory transition-colors hover:bg-ivory/60"
+                class="relative flex size-11 items-center justify-center rounded-full bg-ivory text-action-dark transition-colors hover:bg-ivory/60"
                 aria-label="Play video from Clinician 2"
-                data-video=""
+                data-video-play
               >
-                <img src="/img/icon-play.svg" alt="" width="24" height="24" />
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="playing:hidden" aria-hidden="true">
+                  <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" />
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="hidden playing:block" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14" rx="1.5" />
+                  <rect x="14" y="5" width="4" height="14" rx="1.5" />
+                </svg>
               </button>
             </li>
           </ul>
 
-          <figure class="flex flex-col items-center gap-4 text-center lg:max-w-[464px]">
+          <button
+            type="button"
+            class="sr-only focus-visible:not-sr-only focus-visible:rounded-full focus-visible:bg-action-dark focus-visible:px-4 focus-visible:py-2 focus-visible:text-body-sm focus-visible:text-ivory"
+            aria-pressed="false"
+            data-rotation-toggle
+          >
+            Pause slideshow
+          </button>
+
+          <figure class="flex flex-col items-center gap-4 text-center lg:max-w-116">
             <blockquote>
               <p class="text-quote italic">
                 “Patients bring Groomie products home because they want to bridge what they've experienced in the
@@ -1088,12 +1121,12 @@
               </p>
             </blockquote>
             <figcaption class="flex flex-col items-center gap-2">
-              <cite class="font-serif text-h2-mobile font-light text-gold not-italic lg:text-lead">- Dr. Gould</cite>
+              <cite class="font-headings text-h2-mobile font-light text-gold not-italic lg:text-lead">- Dr. Gould</cite>
               <p class="text-body-compact lg:text-body-sm">Member of the American Society</p>
             </figcaption>
           </figure>
 
-          <a href="/shop" class="btn btn-dark w-full px-[42px] lg:w-fit lg:px-20">
+          <a href="/shop" class="btn btn-dark w-full lg:w-fit">
             Shop Now
             <img src="/img/icon-arrow-right-light.svg" alt="" width="16" height="9" />
           </a>
@@ -1116,17 +1149,17 @@
         <div class="absolute inset-0 -z-10 bg-tint" aria-hidden="true"></div>
 
         <div class="mx-auto flex max-w-page flex-col gap-11 px-4 py-12 lg:flex-row lg:justify-between lg:gap-12 lg:p-20">
-          <div class="flex flex-col gap-5 lg:basis-[454px] lg:justify-between lg:gap-8">
+          <div class="flex flex-col gap-5 lg:basis-113.5 lg:justify-between lg:gap-8">
             <div class="flex flex-col gap-3">
-              <h2 id="proof-title" class="font-serif text-h1-mobile font-light lg:text-h1 lg:whitespace-nowrap">
+              <h2 id="proof-title" class="font-headings text-h1-mobile font-light lg:text-h1 lg:whitespace-nowrap">
                 Clinical proof isn't<br />optional - it's essential
               </h2>
-              <p class="max-w-[330px] text-body-sm text-ivory/80 lg:max-w-none lg:text-body">
+              <p class="max-w-82.5 text-body-sm text-ivory/80 lg:max-w-none lg:text-body">
                 Hair health innovations you can trust, thanks to industry-leading hair measurement
               </p>
             </div>
 
-            <ul class="flex items-center gap-[26px]" aria-label="Certifications">
+            <ul class="flex items-center gap-6.5" aria-label="Certifications">
               <li><img src="/img/proof-nsf.svg" alt="NSF" width="43" height="43" loading="lazy" /></li>
               <li><img src="/img/proof-cgmp.svg" alt="cGMP" width="72" height="18" loading="lazy" /></li>
               <li><img src="/img/proof-tga.svg" alt="TGA" width="52" height="21" loading="lazy" /></li>
@@ -1134,22 +1167,40 @@
           </div>
 
           <!-- Stats -->
-          <dl class="flex flex-col divide-y divide-ivory/20 lg:basis-[540px]">
-            <div class="flex items-start justify-between gap-4 py-4 first:pt-0 last:pb-0 lg:py-[30px]">
-              <dt class="font-serif text-metric-mobile font-medium text-gold lg:text-metric">100%</dt>
-              <dd class="w-[213px] shrink-0 text-caption-italic italic">
+          <dl class="flex flex-col divide-y divide-ivory/20 lg:basis-135">
+            <div class="flex items-start justify-between gap-4 py-4 first:pt-0 last:pb-0 lg:py-7.5">
+              <dt class="font-headings text-metric-mobile font-medium text-gold tabular-nums lg:text-metric">
+                <span class="sr-only">100%</span>
+                <span class="inline-grid" aria-hidden="true">
+                  <span class="invisible [grid-area:1/1]">100%</span>
+                  <span class="[grid-area:1/1]" data-counter="100" data-suffix="%">100%</span>
+                </span>
+              </dt>
+              <dd class="w-53.25 shrink-0 text-caption-italic italic">
                 reported noticeably stronger hair after 3 months on Groomie Women
               </dd>
             </div>
-            <div class="flex items-start justify-between gap-4 py-4 first:pt-0 last:pb-0 lg:py-[30px]">
-              <dt class="font-serif text-metric-mobile font-medium text-gold lg:text-metric">99%</dt>
-              <dd class="w-[213px] shrink-0 text-caption-italic italic">
+            <div class="flex items-start justify-between gap-4 py-4 first:pt-0 last:pb-0 lg:py-7.5">
+              <dt class="font-headings text-metric-mobile font-medium text-gold tabular-nums lg:text-metric">
+                <span class="sr-only">99%</span>
+                <span class="inline-grid" aria-hidden="true">
+                  <span class="invisible [grid-area:1/1]">99%</span>
+                  <span class="[grid-area:1/1]" data-counter="99" data-suffix="%">99%</span>
+                </span>
+              </dt>
+              <dd class="w-53.25 shrink-0 text-caption-italic italic">
                 saw new baby hairs coming in after 6 months on Groomie Women
               </dd>
             </div>
-            <div class="flex items-start justify-between gap-4 py-4 first:pt-0 last:pb-0 lg:py-[30px]">
-              <dt class="font-serif text-metric-mobile font-medium text-gold lg:text-metric">25+</dt>
-              <dd class="w-[213px] shrink-0 text-caption-italic italic">
+            <div class="flex items-start justify-between gap-4 py-4 first:pt-0 last:pb-0 lg:py-7.5">
+              <dt class="font-headings text-metric-mobile font-medium text-gold tabular-nums lg:text-metric">
+                <span class="sr-only">25+</span>
+                <span class="inline-grid" aria-hidden="true">
+                  <span class="invisible [grid-area:1/1]">25+</span>
+                  <span class="[grid-area:1/1]" data-counter="25" data-suffix="+">25+</span>
+                </span>
+              </dt>
+              <dd class="w-53.25 shrink-0 text-caption-italic italic">
                 clinical studies back these results, including randomized.
               </dd>
             </div>
@@ -1158,14 +1209,14 @@
       </section>
 
       <!-- ===== Reviews ===== -->
-      <section class="overflow-hidden" aria-labelledby="reviews-title">
+      <section class="overflow-hidden" aria-labelledby="reviews-title" data-video-slider>
         <div class="mx-auto flex max-w-page flex-col gap-6 px-4 lg:px-15">
           <div class="flex flex-col items-center gap-3 text-center">
             <p class="flex items-center gap-1.5 text-link font-medium">
               <img src="/img/rating-stars.svg" alt="5 out of 5 stars" width="80" height="16" loading="lazy" class="h-3.5 w-auto lg:h-4" />
               Loved by 500k+ women
             </p>
-            <h2 id="reviews-title" class="font-serif text-h1-mobile font-light lg:text-h1">
+            <h2 id="reviews-title" class="font-headings text-h1-mobile font-light lg:text-h1">
               Join thousands who<br />have transformed skin
             </h2>
           </div>
@@ -1173,18 +1224,25 @@
           <!-- Review cards -->
           <ul
             class="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-2.5 overflow-x-auto px-4 [scrollbar-width:none] lg:mx-0 lg:gap-4 lg:overflow-visible lg:px-0"
+            data-scroll-track
           >
-            <li class="w-[294px] shrink-0 snap-start lg:w-auto lg:flex-1">
+            <li class="w-73.5 shrink-0 snap-start lg:w-auto lg:flex-1">
               <article class="flex flex-col gap-2.5 lg:gap-4">
-                <div class="relative flex h-[450px] items-center justify-center overflow-hidden rounded-card lg:h-[496px]">
-                  <img src="/img/review-video-1.webp" alt="" width="318" height="496" loading="lazy" class="absolute inset-0 size-full object-cover" />
+                <div class="relative flex h-112.5 items-center justify-center overflow-hidden rounded-card lg:h-124">
+                  <video class="absolute inset-0 size-full object-cover" poster="/img/review-video-1.webp" muted playsinline preload="none" data-video="review-1.mp4"></video>
                   <button
                     type="button"
-                    class="relative flex size-11 items-center justify-center rounded-full bg-ivory transition-colors hover:bg-ivory/60"
+                    class="relative flex size-11 items-center justify-center rounded-full bg-ivory text-action-dark transition-colors hover:bg-ivory/60"
                     aria-label="Play Emily K.'s video review"
-                    data-video=""
+                    data-video-play
                   >
-                    <img src="/img/icon-play.svg" alt="" width="24" height="24" />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="playing:hidden" aria-hidden="true">
+                  <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" />
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="hidden playing:block" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14" rx="1.5" />
+                  <rect x="14" y="5" width="4" height="14" rx="1.5" />
+                </svg>
                   </button>
                 </div>
                 <div class="flex flex-col gap-4 rounded-card border border-action-dark/10 p-4 backdrop-blur-glass">
@@ -1193,7 +1251,7 @@
                       <cite class="text-body font-semibold not-italic">- Emily K.</cite>
                       <img src="/img/rating-stars.svg" alt="5 out of 5 stars" width="80" height="16" loading="lazy" class="h-3.5 w-auto lg:h-4" />
                     </footer>
-                    <p class="max-w-[253px] text-caption-italic italic lg:text-quote">
+                    <p class="max-w-63.25 text-caption-italic italic lg:text-quote">
                       “I've been using this face mask a few times a week for about a month now, and I'm really happy
                       with it.”
                     </p>
@@ -1211,17 +1269,23 @@
                 </div>
               </article>
             </li>
-            <li class="w-[294px] shrink-0 snap-start lg:w-auto lg:flex-1">
+            <li class="w-73.5 shrink-0 snap-start lg:w-auto lg:flex-1">
               <article class="flex flex-col gap-2.5 lg:gap-4">
-                <div class="relative flex h-[450px] items-center justify-center overflow-hidden rounded-card lg:h-[496px]">
-                  <img src="/img/review-video-2.webp" alt="" width="318" height="496" loading="lazy" class="absolute inset-0 size-full object-cover" />
+                <div class="relative flex h-112.5 items-center justify-center overflow-hidden rounded-card lg:h-124">
+                  <video class="absolute inset-0 size-full object-cover" poster="/img/review-video-2.webp" muted playsinline preload="none" data-video="review-2.mp4"></video>
                   <button
                     type="button"
-                    class="relative flex size-11 items-center justify-center rounded-full bg-ivory transition-colors hover:bg-ivory/60"
+                    class="relative flex size-11 items-center justify-center rounded-full bg-ivory text-action-dark transition-colors hover:bg-ivory/60"
                     aria-label="Play Sandra F.'s video review"
-                    data-video=""
+                    data-video-play
                   >
-                    <img src="/img/icon-play.svg" alt="" width="24" height="24" />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="playing:hidden" aria-hidden="true">
+                  <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" />
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="hidden playing:block" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14" rx="1.5" />
+                  <rect x="14" y="5" width="4" height="14" rx="1.5" />
+                </svg>
                   </button>
                 </div>
                 <div class="flex flex-col gap-4 rounded-card border border-action-dark/10 p-4 backdrop-blur-glass">
@@ -1230,7 +1294,7 @@
                       <cite class="text-body font-semibold not-italic">- Sandra F.</cite>
                       <img src="/img/rating-stars.svg" alt="5 out of 5 stars" width="80" height="16" loading="lazy" class="h-3.5 w-auto lg:h-4" />
                     </footer>
-                    <p class="max-w-[253px] text-caption-italic italic lg:text-quote">
+                    <p class="max-w-63.25 text-caption-italic italic lg:text-quote">
                       “I've been using this face mask a few times a week for about a month now, and I'm really happy
                       with it.”
                     </p>
@@ -1248,17 +1312,23 @@
                 </div>
               </article>
             </li>
-            <li class="w-[294px] shrink-0 snap-start lg:w-auto lg:flex-1">
+            <li class="w-73.5 shrink-0 snap-start lg:w-auto lg:flex-1">
               <article class="flex flex-col gap-2.5 lg:gap-4">
-                <div class="relative flex h-[450px] items-center justify-center overflow-hidden rounded-card lg:h-[496px]">
-                  <img src="/img/review-video-1.webp" alt="" width="318" height="496" loading="lazy" class="absolute inset-0 size-full object-cover" />
+                <div class="relative flex h-112.5 items-center justify-center overflow-hidden rounded-card lg:h-124">
+                  <video class="absolute inset-0 size-full object-cover" poster="/img/review-video-1.webp" muted playsinline preload="none" data-video="review-3.mp4"></video>
                   <button
                     type="button"
-                    class="relative flex size-11 items-center justify-center rounded-full bg-ivory transition-colors hover:bg-ivory/60"
+                    class="relative flex size-11 items-center justify-center rounded-full bg-ivory text-action-dark transition-colors hover:bg-ivory/60"
                     aria-label="Play Emily K.'s video review"
-                    data-video=""
+                    data-video-play
                   >
-                    <img src="/img/icon-play.svg" alt="" width="24" height="24" />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="playing:hidden" aria-hidden="true">
+                  <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" />
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="hidden playing:block" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14" rx="1.5" />
+                  <rect x="14" y="5" width="4" height="14" rx="1.5" />
+                </svg>
                   </button>
                 </div>
                 <div class="flex flex-col gap-4 rounded-card border border-action-dark/10 p-4 backdrop-blur-glass">
@@ -1267,7 +1337,7 @@
                       <cite class="text-body font-semibold not-italic">- Emily K.</cite>
                       <img src="/img/rating-stars.svg" alt="5 out of 5 stars" width="80" height="16" loading="lazy" class="h-3.5 w-auto lg:h-4" />
                     </footer>
-                    <p class="max-w-[253px] text-caption-italic italic lg:text-quote">
+                    <p class="max-w-63.25 text-caption-italic italic lg:text-quote">
                       “I've been using this face mask a few times a week for about a month now, and I'm really happy
                       with it.”
                     </p>
@@ -1285,17 +1355,23 @@
                 </div>
               </article>
             </li>
-            <li class="w-[294px] shrink-0 snap-start lg:w-auto lg:flex-1">
+            <li class="w-73.5 shrink-0 snap-start lg:w-auto lg:flex-1">
               <article class="flex flex-col gap-2.5 lg:gap-4">
-                <div class="relative flex h-[450px] items-center justify-center overflow-hidden rounded-card lg:h-[496px]">
-                  <img src="/img/review-video-2.webp" alt="" width="318" height="496" loading="lazy" class="absolute inset-0 size-full object-cover" />
+                <div class="relative flex h-112.5 items-center justify-center overflow-hidden rounded-card lg:h-124">
+                  <video class="absolute inset-0 size-full object-cover" poster="/img/review-video-2.webp" muted playsinline preload="none" data-video="review-4.mp4"></video>
                   <button
                     type="button"
-                    class="relative flex size-11 items-center justify-center rounded-full bg-ivory transition-colors hover:bg-ivory/60"
+                    class="relative flex size-11 items-center justify-center rounded-full bg-ivory text-action-dark transition-colors hover:bg-ivory/60"
                     aria-label="Play Sandra F.'s video review"
-                    data-video=""
+                    data-video-play
                   >
-                    <img src="/img/icon-play.svg" alt="" width="24" height="24" />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="playing:hidden" aria-hidden="true">
+                  <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" />
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="hidden playing:block" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14" rx="1.5" />
+                  <rect x="14" y="5" width="4" height="14" rx="1.5" />
+                </svg>
                   </button>
                 </div>
                 <div class="flex flex-col gap-4 rounded-card border border-action-dark/10 p-4 backdrop-blur-glass">
@@ -1304,7 +1380,7 @@
                       <cite class="text-body font-semibold not-italic">- Sandra F.</cite>
                       <img src="/img/rating-stars.svg" alt="5 out of 5 stars" width="80" height="16" loading="lazy" class="h-3.5 w-auto lg:h-4" />
                     </footer>
-                    <p class="max-w-[253px] text-caption-italic italic lg:text-quote">
+                    <p class="max-w-63.25 text-caption-italic italic lg:text-quote">
                       “I've been using this face mask a few times a week for about a month now, and I'm really happy
                       with it.”
                     </p>
@@ -1323,6 +1399,15 @@
               </article>
             </li>
           </ul>
+
+          <button
+            type="button"
+            class="sr-only focus-visible:not-sr-only focus-visible:rounded-full focus-visible:bg-action-dark focus-visible:px-4 focus-visible:py-2 focus-visible:text-body-sm focus-visible:text-ivory"
+            aria-pressed="false"
+            data-rotation-toggle
+          >
+            Pause slideshow
+          </button>
         </div>
       </section>
 
@@ -1336,11 +1421,11 @@
             width="1366"
             height="1152"
             loading="lazy"
-            class="hidden h-[499px] w-[58%] shrink-0 rounded-card object-cover object-top lg:block"
+            class="hidden h-124.75 w-[58%] shrink-0 rounded-card object-cover object-top lg:block"
           />
 
           <div class="flex flex-1 flex-col gap-6">
-            <h2 id="faq-title" class="text-center font-serif text-h1-mobile font-light lg:text-left lg:text-h1">
+            <h2 id="faq-title" class="text-center font-headings text-h1-mobile font-light lg:text-left lg:text-h1">
               Still Have Questions?
             </h2>
 
@@ -1451,18 +1536,18 @@
         <div class="absolute inset-0 -z-10 bg-linear-to-b from-black/41 to-transparent lg:bg-tint lg:bg-none" aria-hidden="true"></div>
 
         <div
-          class="mx-auto flex min-h-[490px] max-w-page flex-col px-4 pt-12 lg:min-h-[572px] lg:justify-center lg:px-15 lg:py-20"
+          class="mx-auto flex min-h-122.5 max-w-page flex-col px-4 pt-12 lg:min-h-143 lg:justify-center lg:px-15 lg:py-20"
         >
-          <div class="flex flex-col items-center gap-6 text-center lg:w-[525px] lg:items-start lg:text-left">
+          <div class="flex flex-col items-center gap-6 text-center lg:w-131.25 lg:items-start lg:text-left">
             <div class="flex flex-col items-center gap-3 lg:items-start">
-              <h2 id="cta-title" class="font-serif text-h1-mobile font-light lg:text-h1">
+              <h2 id="cta-title" class="font-headings text-h1-mobile font-light lg:text-h1">
                 Your routine <br class="lg:hidden" />starts now
               </h2>
-              <p class="max-w-[272px] text-body-sm text-ivory/80 lg:max-w-[470px] lg:text-body">
+              <p class="max-w-68 text-body-sm text-ivory/80 lg:max-w-117.5 lg:text-body">
                 Everything you need for smoother skin and effortless self-care, all in one place.
               </p>
             </div>
-            <a href="/shop" class="btn btn-light w-[200px] px-[42px] lg:w-fit lg:px-20">
+            <a href="/shop" class="btn btn-light w-50 lg:w-fit">
               Shop Ritual
               <img src="/img/icon-arrow-right-dark.svg" alt="" width="16" height="9" />
             </a>
@@ -1474,20 +1559,20 @@
     <!-- ===== Footer ===== -->
     <footer class="bg-action-dark text-ivory">
       <div
-        class="mx-auto flex max-w-page flex-col gap-6 px-4 pt-[52px] pb-8 lg:grid lg:grid-cols-[minmax(0,545px)_1fr_260px] lg:grid-rows-[auto_auto_1fr] lg:gap-x-16 lg:px-15 xl:grid-cols-[545fr_64px_59fr_593fr_59fr] xl:gap-x-0 lg:pt-20 lg:pb-6"
+        class="mx-auto flex max-w-page flex-col gap-6 px-4 pt-13 pb-8 lg:grid lg:grid-cols-[minmax(0,545px)_1fr_260px] lg:grid-rows-[auto_auto_1fr] lg:gap-x-16 lg:px-15 xl:grid-cols-[545fr_64px_59fr_593fr_59fr] xl:gap-x-0 lg:pt-20 lg:pb-6"
       >
         <section class="flex flex-col gap-6 lg:col-start-1 lg:row-span-3 lg:row-start-1" aria-labelledby="newsletter-title">
           <div class="flex flex-col gap-3">
-            <h2 id="newsletter-title" class="font-serif text-h1-mobile font-light lg:text-h1">
+            <h2 id="newsletter-title" class="font-headings text-h1-mobile font-light lg:text-h1">
               Get $20 off<br />on your next order!
             </h2>
-            <p class="max-w-[330px] text-body-sm text-ivory/80">
+            <p class="max-w-82.5 text-body-sm text-ivory/80">
               Join our list for exclusive offers, new launches<br /> and skincare tips, straight to your inbox.
             </p>
           </div>
 
           <!-- Newsletter form -->
-          <form action="#" method="post" class="group/form flex flex-wrap gap-x-2 gap-y-3 lg:w-[440px]" novalidate data-newsletter>
+          <form action="#" method="post" class="group/form flex flex-wrap gap-x-2 gap-y-3 lg:w-110" novalidate data-newsletter>
             <label for="newsletter-email" class="sr-only">Email</label>
             <input
               id="newsletter-email"
@@ -1572,7 +1657,7 @@
           class="grid grid-cols-2 gap-x-4 gap-y-10 lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:flex lg:justify-between lg:gap-0 xl:col-start-3"
           aria-label="Footer"
         >
-          <div class="flex flex-col gap-6 lg:w-[140px]">
+          <div class="flex flex-col gap-6 lg:w-35">
             <h3 class="text-body font-semibold">Shop</h3>
             <ul class="flex flex-col gap-5 text-link font-medium text-ivory/80 lg:text-body-sm">
               <li><a href="#" class="transition-colors hover:text-ivory/60">Shop All</a></li>
@@ -1581,7 +1666,7 @@
               <li><a href="#" class="transition-colors hover:text-ivory/60">Devices</a></li>
             </ul>
           </div>
-          <div class="flex flex-col gap-6 lg:w-[140px]">
+          <div class="flex flex-col gap-6 lg:w-35">
             <h3 class="text-body font-semibold">About</h3>
             <ul class="flex flex-col gap-5 text-link font-medium text-ivory/80 lg:text-body-sm">
               <li><a href="#how-it-works" class="transition-colors hover:text-ivory/60">How it Works</a></li>
@@ -1590,7 +1675,7 @@
               <li><a href="#" class="transition-colors hover:text-ivory/60">Contact Us</a></li>
             </ul>
           </div>
-          <div class="flex flex-col gap-6 lg:w-[140px]">
+          <div class="flex flex-col gap-6 lg:w-35">
             <h3 class="text-body font-semibold">Help</h3>
             <ul class="flex flex-col gap-5 text-link font-medium text-ivory/80 lg:text-body-sm">
               <li><a href="#" class="transition-colors hover:text-ivory/60">Returns &amp; Exchanges</a></li>
@@ -1599,7 +1684,7 @@
               <li><a href="#" class="transition-colors hover:text-ivory/60">Return Policy</a></li>
             </ul>
           </div>
-          <div class="flex flex-col gap-6 lg:w-[140px]">
+          <div class="flex flex-col gap-6 lg:w-35">
             <h3 class="text-body font-semibold">More</h3>
             <ul class="flex flex-col gap-5 text-link font-medium text-ivory/80 lg:text-body-sm">
               <li><a href="#" class="transition-colors hover:text-ivory/60">Refer &amp; Earn</a></li>
@@ -1612,7 +1697,7 @@
 
         <hr class="border-ivory/20 lg:col-span-2 lg:col-start-2 lg:row-start-2 xl:col-start-3" />
 
-        <p class="text-caption text-ivory/80 lg:col-start-2 lg:row-start-3 lg:max-w-[340px] lg:text-body-sm xl:col-span-2 xl:col-start-3">
+        <p class="text-caption text-ivory/80 lg:col-start-2 lg:row-start-3 lg:max-w-85 lg:text-body-sm xl:col-span-2 xl:col-start-3">
           The statements on this website have not been evaluated by the FDA. The information provided on this site is not
           intended to diagnose, treat, cure, or prevent any disease and should not be construed as medical advice.
           Results may not be typical.
@@ -1629,7 +1714,7 @@
         </ul>
 
         <!-- Country selector -->
-        <div class="relative lg:col-start-3 lg:row-start-3 lg:self-start xl:col-span-2 xl:col-start-3 xl:w-[260px] xl:justify-self-end">
+        <div class="relative lg:col-start-3 lg:row-start-3 lg:self-start xl:col-span-2 xl:col-start-3 xl:w-65 xl:justify-self-end">
           <button
             type="button"
             class="flex h-12 w-full items-center justify-between rounded-full border border-transparent bg-ivory/12 px-5 text-link font-medium transition-colors hover:bg-ivory/20 aria-expanded:border-ivory lg:text-body-sm aria-expanded:[&>img]:rotate-180"
@@ -1639,7 +1724,7 @@
             data-country-toggle
           >
             <span class="flex items-center gap-2.5" data-country-current>
-              <img src="/img/icon-flag-us.svg" alt="" width="22" height="22" class="size-[22px] rounded-full" />
+              <img src="/img/icon-flag-us.svg" alt="" width="22" height="22" class="size-5.5 rounded-full" />
               <span>United States ($)</span>
             </span>
             <img src="/img/icon-caret-down.svg" alt="" width="8" height="6" class="transition-transform" />
@@ -1659,7 +1744,7 @@
               class="group/option flex h-11 cursor-pointer items-center gap-2.5 rounded-xl px-3 outline-none transition-colors hover:bg-muted focus-visible:bg-muted aria-selected:font-medium"
               data-value="US"
             >
-              <img src="/img/icon-flag-us.svg" alt="" width="22" height="22" class="size-[22px] rounded-full" />
+              <img src="/img/icon-flag-us.svg" alt="" width="22" height="22" class="size-5.5 rounded-full" />
               <span class="flex-1">United States ($)</span>
               <img src="/img/icon-check.svg" alt="" width="16" height="16" class="hidden size-4 group-aria-selected/option:block" data-check />
             </li>
@@ -1671,7 +1756,7 @@
               class="group/option flex h-11 cursor-pointer items-center gap-2.5 rounded-xl px-3 outline-none transition-colors hover:bg-muted focus-visible:bg-muted aria-selected:font-medium"
               data-value="CA"
             >
-              <img src="/img/icon-flag-ca.svg" alt="" width="22" height="22" class="size-[22px] rounded-full" />
+              <img src="/img/icon-flag-ca.svg" alt="" width="22" height="22" class="size-5.5 rounded-full" />
               <span class="flex-1">Canada (CA$)</span>
               <img src="/img/icon-check.svg" alt="" width="16" height="16" class="hidden size-4 group-aria-selected/option:block" data-check />
             </li>
@@ -1683,7 +1768,7 @@
               class="group/option flex h-11 cursor-pointer items-center gap-2.5 rounded-xl px-3 outline-none transition-colors hover:bg-muted focus-visible:bg-muted aria-selected:font-medium"
               data-value="GB"
             >
-              <img src="/img/icon-flag-uk.svg" alt="" width="22" height="22" class="size-[22px] rounded-full" />
+              <img src="/img/icon-flag-uk.svg" alt="" width="22" height="22" class="size-5.5 rounded-full" />
               <span class="flex-1">United Kingdom (£)</span>
               <img src="/img/icon-check.svg" alt="" width="16" height="16" class="hidden size-4 group-aria-selected/option:block" data-check />
             </li>
@@ -1695,7 +1780,7 @@
               class="group/option flex h-11 cursor-pointer items-center gap-2.5 rounded-xl px-3 outline-none transition-colors hover:bg-muted focus-visible:bg-muted aria-selected:font-medium"
               data-value="AU"
             >
-              <img src="/img/icon-flag-au.svg" alt="" width="22" height="22" class="size-[22px] rounded-full" />
+              <img src="/img/icon-flag-au.svg" alt="" width="22" height="22" class="size-5.5 rounded-full" />
               <span class="flex-1">Australia (A$)</span>
               <img src="/img/icon-check.svg" alt="" width="16" height="16" class="hidden size-4 group-aria-selected/option:block" data-check />
             </li>
@@ -1707,7 +1792,7 @@
               class="group/option flex h-11 cursor-pointer items-center gap-2.5 rounded-xl px-3 outline-none transition-colors hover:bg-muted focus-visible:bg-muted aria-selected:font-medium"
               data-value="EU"
             >
-              <img src="/img/icon-flag-eu.svg" alt="" width="22" height="22" class="size-[22px] rounded-full" />
+              <img src="/img/icon-flag-eu.svg" alt="" width="22" height="22" class="size-5.5 rounded-full" />
               <span class="flex-1">European Union (€)</span>
               <img src="/img/icon-check.svg" alt="" width="16" height="16" class="hidden size-4 group-aria-selected/option:block" data-check />
             </li>
@@ -1724,35 +1809,5 @@
         </p>
       </div>
     </footer>
-    <!-- ===== Video Modal ===== -->
-    <dialog
-      id="video-modal"
-      class="m-auto w-[min(92vw,960px)] overflow-visible bg-transparent p-0 text-ivory backdrop:bg-action-dark/50"
-      aria-labelledby="video-modal-title"
-    >
-      <div class="relative overflow-hidden rounded-card bg-cocoa">
-        <h2 id="video-modal-title" class="sr-only" data-video-title>Video</h2>
-        <video class="aspect-video w-full bg-black" controls playsinline hidden></video>
-        <div class="relative">
-          <img alt="" class="aspect-video w-full object-cover opacity-60" data-video-poster />
-          <p
-            class="absolute inset-0 flex items-center justify-center p-6 text-center font-serif text-h2-mobile lg:text-h2"
-            data-video-fallback
-          >
-            Video coming soon
-          </p>
-        </div>
-        <button
-          type="button"
-          class="absolute top-3 right-3 flex size-11 items-center justify-center rounded-full bg-ivory/12 backdrop-blur-glass transition-colors hover:bg-ivory/20"
-          aria-label="Close video"
-          data-video-close
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
-            <path d="M6 6L18 18M18 6L6 18" />
-          </svg>
-        </button>
-      </div>
-    </dialog>
   </body>
 </html>

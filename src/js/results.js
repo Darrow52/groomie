@@ -79,7 +79,6 @@ export function initResults(root, carousel) {
     avatars[index].scrollIntoView({ block: 'nearest', inline: 'nearest' })
 
     carousel.goTo(startStage, { instant: true })
-    track.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'ease-out' })
   }
 
   // Avatars

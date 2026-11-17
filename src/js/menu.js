@@ -15,7 +15,6 @@ export function initMenu() {
     header.toggleAttribute('data-open', open)
     burger.setAttribute('aria-expanded', String(open))
     burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
-    document.body.style.overflow = open ? 'hidden' : ''
   }
 
   // Mega menu
