@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* Design tokens (Groomie UI Kit) */
+@theme {
+  /* Colors */
+  --color-ivory: #fcfbf9; /* neutral/white */
+  --color-ink: #50493f; /* text/primary */
+  --color-surface: #f5f1e9; /* background/surface */
+  --color-gold: #c19437; /* brand/gold */
+  --color-action-dark: #333333; /* action/dark */
+  --color-action-light: #ebdfc4; /* action/light */
+  --color-cocoa: #30241e; /* routine section background */
+  --color-tint: rgb(18 13 7 / 0.16); /* overlay/image-tint */
+  --color-muted: #f2f1ef; /* background/muted */
+  --color-error-inverse: #ff7a7a; /* status/error-inverse */
+  --color-success-inverse: #5fd38d; /* status/success-inverse */
+
+  /* Fonts */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Merriweather", ui-serif, Georgia, serif;
+
+  /* Text styles */
+  --text-display: 4rem; /* 64px, hero H1 desktop */
+  --text-display--line-height: 4.375rem;
+  --text-display--letter-spacing: -0.05rem;
+
+  --text-h1: 2.875rem; /* 46px, section titles */
+  --text-h1--line-height: 3.5rem;
+  --text-h1--letter-spacing: -0.05rem;
+
+  --text-h1-mobile: 2rem; /* 32px */
+  --text-h1-mobile--line-height: 2.375rem;
+  --text-h1-mobile--letter-spacing: -0.05rem;
+
+  --text-h2: 1.25rem; /* 20px */
+  --text-h2--line-height: 1.75rem;
+  --text-h2--letter-spacing: -0.05rem;
+
+  --text-h2-mobile: 1rem; /* 16px */
+  --text-h2-mobile--line-height: 1.375rem;
+  --text-h2-mobile--letter-spacing: -0.05rem;
+
+  --text-lead: 1.25rem; /* 20px, lead */
+  --text-lead--line-height: 1.625rem;
+  --text-lead--letter-spacing: -0.05rem;
+
+  --text-metric: 2.5rem; /* 40px, stats */
+  --text-metric--line-height: 2.5rem;
+  --text-metric--letter-spacing: -0.04rem;
+
+  --text-metric-mobile: 2.125rem; /* 34px */
+  --text-metric-mobile--line-height: 2.125rem;
+  --text-metric-mobile--letter-spacing: -0.034rem;
+
+  --text-metric-sm: 1.875rem; /* 30px, ~0.02mm */
+  --text-metric-sm--line-height: 2.125rem;
+  --text-metric-sm--letter-spacing: -0.03rem;
+
+  --text-card-title: 1.125rem; /* 18px */
+  --text-card-title--line-height: 1.5rem;
+  --text-card-title--letter-spacing: -0.016em;
+
+  --text-body: 1rem; /* 16px */
+  --text-body--line-height: 1.375rem;
+  --text-body--letter-spacing: -0.016em;
+
+  --text-body-sm: 0.875rem; /* 14px */
+  --text-body-sm--line-height: 1.25rem;
+  --text-body-sm--letter-spacing: -0.016em;
+
+  --text-body-compact: 0.8125rem; /* 13px */
+  --text-body-compact--line-height: 1.25rem;
+  --text-body-compact--letter-spacing: -0.016em;
+
+  --text-quote: 0.875rem; /* 14px italic, quotes */
+  --text-quote--line-height: 1.25rem;
+
+  --text-caption-italic: 0.8125rem; /* 13px italic */
+  --text-caption-italic--line-height: 1.125rem;
+  --text-caption-italic--letter-spacing: -0.016em;
+
+  --text-button: 0.9375rem; /* 15px */
+  --text-button--line-height: 1.125rem;
+  --text-button--letter-spacing: -0.016em;
+
+  --text-link: 0.8125rem; /* 13px */
+  --text-link--line-height: 1rem;
+  --text-link--letter-spacing: -0.016em;
+
+  --text-label: 0.75rem; /* 12px, badges */
+  --text-label--line-height: 1rem;
+  --text-label--letter-spacing: -0.016em;
+
+  --text-caption: 0.75rem; /* 12px, captions */
+  --text-caption--line-height: 1rem;
+  --text-caption--letter-spacing: -0.016em;
+
+  --text-micro: 0.625rem; /* 10px, sale label (mobile) */
+  --text-micro--line-height: 0.75rem;
+
+  /* Layout */
+  --container-page: 90rem; /* 1440px */
+
+  /* Custom breakpoint: wide (1360px) */
+  --breakpoint-wide: 85rem;
+
+  /* Radius & effects */
+  --radius-card: 26px; /* radius/lg */
+  --blur-glass: 6px; /* Effects / Background Blur */
+  --shadow-popover: 0 12px 32px rgb(0 0 0 / 0.24); /* Shadow / Popover */
+}
+
+/* Base styles */
+@layer base {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  body {
+    @apply bg-ivory font-sans text-body text-ink antialiased;
+  }
+
+  /* FAQ accordion animation */
+  details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 300ms ease,
+      content-visibility 300ms allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* Buttons */
+@utility btn {
+  @apply flex h-14 items-center justify-center gap-2 rounded-full text-button font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2;
+
+  /* Arrow icon box 24px */
+  & > img {
+    @apply box-content px-1;
+  }
+}
+@utility btn-dark {
+  @apply bg-action-dark text-ivory hover:bg-action-dark/80 focus-visible:outline-action-dark;
+}
+@utility btn-light {
+  @apply bg-action-light text-action-dark hover:bg-action-light/80 focus-visible:outline-ivory;
+}
+
+/* Badges */
+@utility badge {
+  @apply inline-flex h-6 w-fit shrink-0 items-center rounded-full border px-2.5 text-label font-semibold whitespace-nowrap uppercase;
+}
+@utility badge-gold {
+  @apply border-gold bg-ivory text-gold; /* Day 30, Powered by… */
+}
+@utility badge-gold-filled {
+  @apply border-gold bg-gold text-ivory; /* Day 180+ */
+}
+@utility badge-outline-light {
+  @apply border-gold text-ivory; /* Best choice */
+}
+@utility badge-glass {
+  @apply border-ivory/20 bg-ivory/12 text-ivory; /* Outer / Inner layer */
+}
+@utility badge-tag {
+  @apply border-transparent bg-surface text-ink backdrop-blur-glass; /* Before */
+}
+
+/* Sale label (Gradient / Gold Shine) */
+@utility sale-label {
+  @apply inline-flex w-fit items-center rounded-full px-2 py-1 font-semibold whitespace-nowrap text-action-dark uppercase;
+  background-image: linear-gradient(90deg, #ddae29 0%, #f9e5b1 65%, #ddae29 123%);
+}
+
+/* Menu category card */
+@utility menu-card {
+  @apply flex items-center gap-4 overflow-hidden rounded-card border border-action-dark/10 bg-muted pr-6 text-ink;
+}

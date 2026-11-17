@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Flag">
+<g clip-path="url(#clip0_0_180)">
+<rect id="Blue" width="22" height="22" fill="#012169"/>
+<path id="Saltire White" d="M0 0L22 22" stroke-width="4.4" stroke="white"/>
+<path id="Saltire White_2" d="M22 0L0 22" stroke-width="4.4" stroke="white"/>
+<path id="Saltire Red" d="M0 0L22 22" stroke-width="1.4" stroke="#C8102E"/>
+<path id="Saltire Red_2" d="M22 0L0 22" stroke-width="1.4" stroke="#C8102E"/>
+<rect id="Cross White" y="8" width="22" height="6" fill="white"/>
+<rect id="Cross White_2" x="8" width="6" height="22" fill="white"/>
+<rect id="Cross Red" y="9.25" width="22" height="3.5" fill="#C8102E"/>
+<rect id="Cross Red_2" x="9.25" width="3.5" height="22" fill="#C8102E"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_180">
+<rect width="22" height="22" rx="11" fill="white"/>
+</clipPath>
+</defs>
+</svg>

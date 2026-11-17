@@ -1,0 +1,31 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Flag">
+<g clip-path="url(#clip0_0_303)">
+<rect id="Blue" width="22" height="22" fill="#012169"/>
+<g id="Canton" clip-path="url(#clip1_0_303)">
+<rect id="Blue_2" width="11" height="11" fill="#012169"/>
+<path id="Saltire White" d="M0 0L11 11" stroke-width="2.2" stroke="white"/>
+<path id="Saltire White_2" d="M11 0L0 11" stroke-width="2.2" stroke="white"/>
+<path id="Saltire Red" d="M0 0L11 11" stroke-width="0.7" stroke="#C8102E"/>
+<path id="Saltire Red_2" d="M11 0L0 11" stroke-width="0.7" stroke="#C8102E"/>
+<rect id="Cross White" y="4" width="11" height="3" fill="white"/>
+<rect id="Cross White_2" x="4" width="3" height="11" fill="white"/>
+<rect id="Cross Red" y="4.625" width="11" height="1.75" fill="#C8102E"/>
+<rect id="Cross Red_2" x="4.625" width="1.75" height="11" fill="#C8102E"/>
+</g>
+<path id="Star" d="M5.5 14.3L5.92954 15.608L7.22003 15.1283L6.46518 16.2797L7.64484 16.9895L6.27401 17.1173L6.45454 18.4821L5.5 17.49L4.54546 18.4821L4.72599 17.1173L3.35516 16.9895L4.53482 16.2797L3.77997 15.1283L5.07046 15.608L5.5 14.3Z" fill="white"/>
+<path id="Star_2" d="M16 3.3L16.2343 4.01348L16.9382 3.75181L16.5265 4.37984L17.1699 4.76703L16.4222 4.83668L16.5207 5.58116L16 5.04L15.4793 5.58116L15.5778 4.83668L14.8301 4.76703L15.4735 4.37984L15.0618 3.75181L15.7657 4.01348L16 3.3Z" fill="white"/>
+<path id="Star_3" d="M19 7.8L19.2343 8.51348L19.9382 8.25181L19.5265 8.87984L20.1699 9.26703L19.4222 9.33668L19.5207 10.0812L19 9.54L18.4793 10.0812L18.5778 9.33668L17.8301 9.26703L18.4735 8.87984L18.0618 8.25181L18.7657 8.51348L19 7.8Z" fill="white"/>
+<path id="Star_4" d="M13.5 9.3L13.7343 10.0135L14.4382 9.75181L14.0265 10.3798L14.6699 10.767L13.9222 10.8367L14.0207 11.5812L13.5 11.04L12.9793 11.5812L13.0778 10.8367L12.3301 10.767L12.9735 10.3798L12.5618 9.75181L13.2657 10.0135L13.5 9.3Z" fill="white"/>
+<path id="Star_5" d="M16 15.7L16.2538 16.4729L17.0164 16.1895L16.5703 16.8698L17.2674 17.2893L16.4574 17.3647L16.564 18.1713L16 17.585L15.436 18.1713L15.5426 17.3647L14.7326 17.2893L15.4297 16.8698L14.9836 16.1895L15.7462 16.4729L16 15.7Z" fill="white"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_303">
+<rect width="22" height="22" rx="11" fill="white"/>
+</clipPath>
+<clipPath id="clip1_0_303">
+<rect width="11" height="11" fill="white"/>
+</clipPath>
+</defs>
+</svg>
