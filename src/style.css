@@ -132,6 +132,14 @@
   --radius-card: 26px; /* radius/lg */
   --blur-glass: 6px; /* Effects / Background Blur */
   --shadow-popover: 0 12px 32px rgb(0 0 0 / 0.24); /* Shadow / Popover */
+
+  --animate-marquee: marquee 45s linear infinite;
+
+  @keyframes marquee {
+    to {
+      translate: -50% 0;
+    }
+  }
 }
 
 /* Base styles */
@@ -195,6 +203,10 @@
 /* Sale label (Gradient / Gold Shine) */
 @utility sale-label {
   @apply inline-flex w-fit items-center rounded-full bg-linear-90 from-shine from-0% via-shine-light via-65% to-shine to-123% px-2 py-1 font-semibold whitespace-nowrap text-action-dark uppercase;
+}
+
+@utility animate-paused {
+  animation-play-state: paused;
 }
 
 @utility carousel-slide {
